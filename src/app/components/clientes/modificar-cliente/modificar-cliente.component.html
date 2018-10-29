@@ -30,7 +30,7 @@
       </li>
       <!-- numero doc -->
       <li>
-          <mat-form-field appearance="outline">
+          <mat-form-field appearance="outline" *ngIf="selected">
             <mat-label>Numero de {{selected}}</mat-label>
             <input formControlName="nombre" type="number" matInput placeholder="38200600">
           </mat-form-field>
