@@ -17,5 +17,6 @@ export class ClientesComponent{
  
   productosList: string[] = ['39048329473242374', '984127412471','7381267438129367'];
 
-  startDate = new Date(1940, 0, 1);
+  startDate = new Date(1920, 0, 1);
+
 }

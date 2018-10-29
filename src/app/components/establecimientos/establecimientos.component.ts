@@ -1,15 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component} from '@angular/core';
+import {FormControl} from '@angular/forms';
 
 @Component({
   selector: 'app-establecimientos',
   templateUrl: './establecimientos.component.html',
   styleUrls: ['./establecimientos.component.scss']
 })
-export class EstablecimientosComponent implements OnInit {
+export class EstablecimientosComponent {
 
-  constructor() { }
+  productos = new FormControl();
+ 
+  productosList: string[] = ['39048329473242374', '984127412471','7381267438129367'];
 
-  ngOnInit() {
-  }
+  startDate = new Date(1920, 0, 1);
 
 }

@@ -1,8 +1,22 @@
-.example-container {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .example-container > * {
-    width: 100%;
-  }
+.container {
+  position: relative;
+}
+.center {
+  left: 0;
+  top: 50%;
+  width: 100%;
+  text-align: center;
+}
+.nav {
+  list-style-type: none; 
+  text-align: center;
+
+  width: 70%;
+  height: 70%;
+}
+
+.nav li {
+  display: inline-block;
+  // font-size: 20px; 
+  padding: 20px;
+}
