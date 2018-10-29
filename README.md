@@ -1,4 +1,6 @@
-# RosterBots Front End
+# Integración de aplicaciones
+## 2do cuatrimestre 2018
+### Entidad de crédito
 
 ##  Installation
 
@@ -7,9 +9,6 @@
 - Clone the project
 - Go to the project folder
 - Run npm update
-
-## Building
-- Run ng build
 
 ## Running
 
