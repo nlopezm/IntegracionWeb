@@ -1,19 +1,21 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
 
 @Component({
   selector: 'app-crear-establecimiento',
   templateUrl: './crear-establecimiento.component.html',
   styleUrls: ['./crear-establecimiento.component.scss']
 })
-export class CrearEstablecimientoComponent implements OnInit {
-  startDate = new Date(1920, 0, 1);
+export class CrearEstablecimientoComponent {
+  startDate = new Date();
 
-  constructor() { }
+  formGroup: FormGroup;
 
-  ngOnInit() {
+  constructor(private fb: FormBuilder) {
+    this.formGroup = this.fb.group({
+      razonSocial: ['', [Validators.required]],
+      cuit: ['', [Validators.required]],
+      direccion: ['', [Validators.required]],
+    });
   }
-
-
-
-
 }
