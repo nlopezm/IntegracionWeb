@@ -19,19 +19,17 @@
       <br>
       <!-- fechas -->
       <li>
-        <mat-form-field appearance="outline" class="tamanoLimite">
-          <mat-label>Válido desde</mat-label>
-          <input formControlName="valido_desde" type="number" matInput [matDatepicker]="picker1">
-          <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-          <mat-datepicker #picker1></mat-datepicker>
+        <mat-form-field>
+          <input formControlName="valido_desde" type="text" matInput [matDatepicker]="picker" placeholder="Váldo desde">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker startView="year"></mat-datepicker>
         </mat-form-field>
       </li>
       <li>
-        <mat-form-field appearance="outline" class="tamanoLimite">
-          <mat-label>Válido hasta</mat-label>
-          <input formControlName="valido_hasta" type="number" matInput [matDatepicker]="picker2">
+        <mat-form-field>
+          <input formControlName="valid_hasta" type="text" matInput [matDatepicker]="picker2" placeholder="Válido hasta">
           <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-          <mat-datepicker #picker2 color="primary"></mat-datepicker>
+          <mat-datepicker #picker2 startView="year"></mat-datepicker>
         </mat-form-field>
       </li>
       <br>
