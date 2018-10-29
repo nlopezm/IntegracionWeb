@@ -11,6 +11,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // Components
 import { ClientesComponent } from 'src/app/components/clientes/clientes.component';
 import { CrearClienteComponent } from 'src/app/components/clientes/crear-cliente/crear-cliente.component';
+import { ModificarClienteComponent } from 'src/app/components/clientes/modificar-cliente/modificar-cliente.component';
 import { CobranzasComponent } from 'src/app/components/cobranzas/cobranzas.component';
 import { ConsumosComponent } from 'src/app/components/consumos/consumos.component';
 import { CrearConsumoComponent } from 'src/app/components/consumos/crear-consumo/crear-consumo.component';
@@ -21,6 +22,7 @@ import { LiquidacionesComponent } from 'src/app/components/liquidaciones/liquida
 import { NavbarComponent } from 'src/app/components/navbar/navbar.component';
 import { TarjetasComponent } from 'src/app/components/tarjetas/tarjetas.component';
 import { CrearTarjetaComponent } from 'src/app/components/tarjetas/crear-tarjeta/crear-tarjeta.component';
+import { ModificarTarjetaComponent } from 'src/app/components/tarjetas/modificar-tarjeta/modificar-tarjeta.component';
 
 // Services
 import { RestService } from './services/rest/rest.service';
@@ -32,6 +34,7 @@ import { RestService } from './services/rest/rest.service';
     NavbarComponent,
     ClientesComponent,
     CrearClienteComponent,
+    ModificarClienteComponent,
     CobranzasComponent,
     ConsumosComponent,
     CrearConsumoComponent,
@@ -41,6 +44,7 @@ import { RestService } from './services/rest/rest.service';
     LiquidacionesComponent,
     TarjetasComponent,
     CrearTarjetaComponent,
+    ModificarTarjetaComponent
   ],
   imports: [
     BrowserModule,
