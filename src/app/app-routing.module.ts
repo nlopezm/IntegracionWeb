@@ -7,7 +7,9 @@ import { ConsumosComponent } from 'src/app/components/consumos/consumos.componen
 import { EstablecimientosComponent } from 'src/app/components/establecimientos/establecimientos.component';
 import { HomeComponent } from 'src/app/components/home/home.component';
 import { LiquidacionesComponent } from 'src/app/components/liquidaciones/liquidaciones.component';
+import { TarjetasComponent } from 'src/app/components/tarjetas/tarjetas.component';
 import { NavbarComponent } from 'src/app/components/navbar/navbar.component';
+import { from } from 'rxjs';
 
 const routes: Routes = [
   { path: 'clientes', component: ClientesComponent, pathMatch: 'full', data: { title: 'Clientes' } },
@@ -17,6 +19,7 @@ const routes: Routes = [
   { path: 'consumos', component: ConsumosComponent, pathMatch: 'full', data: { title: 'Consumos' } },
   { path: 'liquidaciones', component: LiquidacionesComponent, pathMatch: 'full', data: { title: 'Liquidaciones' } },
   { path: 'establecimientos', component: EstablecimientosComponent, pathMatch: 'full', data: { title: 'Establecimientos' } },
+  { path: 'tarjetas', component: TarjetasComponent, pathMatch: 'full', data: { title: 'Tarjetas' } },
   { path: '**', redirectTo: 'home', pathMatch: 'full' },
 ];
 
