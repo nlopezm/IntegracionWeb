@@ -11,6 +11,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // Components
 import { ClientesComponent } from 'src/app/components/clientes/clientes.component';
 import { CrearClienteComponent } from 'src/app/components/clientes/crear-cliente/crear-cliente.component';
+import { ModificarClienteComponent } from 'src/app/components/clientes/modificar-cliente/modificar-cliente.component';
 import { CobranzasComponent } from 'src/app/components/cobranzas/cobranzas.component';
 import { ConsumosComponent } from 'src/app/components/consumos/consumos.component';
 import { EstablecimientosComponent } from 'src/app/components/establecimientos/establecimientos.component';
@@ -32,6 +33,7 @@ import { RestService } from './services/rest/rest.service';
     NavbarComponent,
     ClientesComponent,
     CrearClienteComponent,
+    ModificarClienteComponent,
     CobranzasComponent,
     ConsumosComponent,
     EstablecimientosComponent,
