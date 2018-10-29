@@ -11,6 +11,7 @@ import { HomeComponent } from 'src/app/components/home/home.component';
 import { LiquidacionesComponent } from 'src/app/components/liquidaciones/liquidaciones.component';
 import { TarjetasComponent } from 'src/app/components/tarjetas/tarjetas.component';
 import { CrearTarjetaComponent } from 'src/app/components/tarjetas/crear-tarjeta/crear-tarjeta.component';
+import { ModificarTarjetaComponent } from 'src/app/components/tarjetas/modificar-tarjeta/modificar-tarjeta.component';
 import { NavbarComponent } from 'src/app/components/navbar/navbar.component';
 
 const routes: Routes = [
@@ -23,6 +24,7 @@ const routes: Routes = [
   { path: 'establecimientos/crear', component: CrearEstablecimientoComponent, pathMatch: 'full', data: { title: 'Crear establecimiento' } },
   { path: 'tarjetas', component: TarjetasComponent, pathMatch: 'full', data: { title: 'Tarjetas' } },
   { path: 'tarjetas/crear', component: CrearTarjetaComponent, pathMatch: 'full', data: { title: 'Crear tarjeta' } },
+  { path: 'tarjetas/modificar', component: ModificarTarjetaComponent, pathMatch: 'full', data: { title: 'Modificar tarjeta' } },
   { path: 'liquidaciones', component: LiquidacionesComponent, pathMatch: 'full', data: { title: 'Liquidaciones' } },
   { path: '**', redirectTo: 'home', pathMatch: 'full' },
 ];

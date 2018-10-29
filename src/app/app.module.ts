@@ -20,6 +20,7 @@ import { LiquidacionesComponent } from 'src/app/components/liquidaciones/liquida
 import { NavbarComponent } from 'src/app/components/navbar/navbar.component';
 import { TarjetasComponent } from 'src/app/components/tarjetas/tarjetas.component';
 import { CrearTarjetaComponent } from 'src/app/components/tarjetas/crear-tarjeta/crear-tarjeta.component';
+import { ModificarTarjetaComponent } from 'src/app/components/tarjetas/modificar-tarjeta/modificar-tarjeta.component';
 
 // Services
 import { RestService } from './services/rest/rest.service';
@@ -39,6 +40,7 @@ import { RestService } from './services/rest/rest.service';
     LiquidacionesComponent,
     TarjetasComponent,
     CrearTarjetaComponent,
+    ModificarTarjetaComponent
   ],
   imports: [
     BrowserModule,
