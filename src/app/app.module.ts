@@ -10,9 +10,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // Components
 import { ClientesComponent } from 'src/app/components/clientes/clientes.component';
+import { CrearClienteComponent } from 'src/app/components/clientes/crear-cliente/crear-cliente.component';
 import { CobranzasComponent } from 'src/app/components/cobranzas/cobranzas.component';
 import { ConsumosComponent } from 'src/app/components/consumos/consumos.component';
 import { EstablecimientosComponent } from 'src/app/components/establecimientos/establecimientos.component';
+import { CrearEstablecimientoComponent } from 'src/app/components/establecimientos/crear-establecimiento/crear-establecimiento.component';
 import { HomeComponent } from 'src/app/components/home/home.component';
 import { LiquidacionesComponent } from 'src/app/components/liquidaciones/liquidaciones.component';
 import { NavbarComponent } from 'src/app/components/navbar/navbar.component';
@@ -28,9 +30,11 @@ import { RestService } from './services/rest/rest.service';
     AppComponent,
     NavbarComponent,
     ClientesComponent,
+    CrearClienteComponent,
     CobranzasComponent,
     ConsumosComponent,
     EstablecimientosComponent,
+    CrearEstablecimientoComponent,
     HomeComponent,
     LiquidacionesComponent,
     TarjetasComponent,

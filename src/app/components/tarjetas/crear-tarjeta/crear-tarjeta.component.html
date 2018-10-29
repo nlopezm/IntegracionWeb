@@ -1,55 +1,43 @@
 <form class="container">
 
-  <mat-card style="margin-top:10px">
-    <mat-card-title>
-      Creación del establecimiento
-    </mat-card-title>
-  </mat-card>
-
   <ul class="nav">
     <mat-card class="center">
-      <!-- nombre -->
       <li>
         <mat-form-field appearance="outline">
-          <mat-label>Numero de tarjeta</mat-label>
-          <input matInput placeholder="1111222233334444">
+          <mat-label>Número de tarjeta</mat-label>
+          <input formControlName="numero" type="number" matInput placeholder="1111222233334444">
         </mat-form-field>
       </li>
-      <!-- apellido -->
       <li>
         <mat-form-field color="accent">
-          <mat-label>Valido desde</mat-label>
-          <input matInput [matDatepicker]="picker1">
+          <mat-label>Válido desde</mat-label>
+          <input formControlName="valido_desde" type="number" matInput [matDatepicker]="picker1">
           <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
           <mat-datepicker #picker1></mat-datepicker>
         </mat-form-field>
-
         <mat-form-field color="accent">
-          <mat-label>Valido hasta</mat-label>
-          <input matInput [matDatepicker]="picker2">
+          <mat-label>Válido hasta</mat-label>
+          <input formControlName="valido_hasta" type="number" matInput [matDatepicker]="picker2">
           <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
           <mat-datepicker #picker2 color="primary"></mat-datepicker>
         </mat-form-field>
-      </li>
-      <!-- cuit -->
-      <li>
         <mat-form-field appearance="outline">
-          <mat-label>Cuit</mat-label>
-          <input matInput placeholder="2423300339">
+          <mat-label>Código de seguridad</mat-label>
+          <input formControlName="cod_seguridad" type="number" matInput placeholder="123">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Día de cierre</mat-label>
+          <input formControlName="fecha_cierre" type="number" matInput placeholder="16">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Categoría</mat-label>
+          <input formControlName="categoria" type="text" matInput placeholder="Categoría">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Monto límite</mat-label>
+          <input formControlName="monto_limite" type="number" matInput placeholder="50000">
         </mat-form-field>
       </li>
-
-      <!-- Guardar -->
-      <br>
-      <br>
-      <button mat-raised-button matTooltip="Info about the action" aria-label="Button that displays a tooltip when focused or hovered over"
-        style="margin-right:10px;">
-        Guardar
-      </button>
-      <button mat-raised-button matTooltip="Info about the action" aria-label="Button that displays a tooltip when focused or hovered over">
-        Cancelar
-      </button>
-
     </mat-card>
   </ul>
 </form>

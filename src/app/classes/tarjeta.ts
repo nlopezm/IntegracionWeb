@@ -4,9 +4,9 @@ export class Tarjeta {
   codigoSeguridad: string;
   fechaValidoDesde: Date;
   fechaValidoHasta: Date;
-  fechaCierre: Date;
+  fechaCierre: number;
   cliente: Cliente[];
   estado: boolean;
   categoria: string;
   montoLimite: number;
-}   
+}
