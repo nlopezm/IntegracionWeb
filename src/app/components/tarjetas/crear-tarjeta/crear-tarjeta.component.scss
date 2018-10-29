@@ -1,22 +1,22 @@
-.container {
-  position: relative;
-}
-.center {
-  left: 0;
-  top: 50%;
-  width: 100%;
-  text-align: center;
-}
+
+
 .nav {
   list-style-type: none;
-  text-align: center;
-
-  width: 70%;
+  // text-align: center;
+  width: 80%;
   height: 70%;
 }
-
 .nav li {
   display: inline-block;
   // font-size: 20px;
   padding: 20px;
+}
+.mat-fab {
+  right: 0px;
+  bottom: 0px;
+  position: fixed;
+  margin: 20px;
+}
+.tamanoLimite{
+  width: 200px;
 }
