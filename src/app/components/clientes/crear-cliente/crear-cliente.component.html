@@ -25,10 +25,9 @@
       </mat-select>
     </mat-form-field>
     <!-- numero doc -->
-    <p *ngIf="selected">Ingrese {{selected}}</p>
     <p *ngIf="selected">
       <mat-form-field appearance="outline">
-        <mat-label>Numero de documento:</mat-label>
+        <mat-label>Numero de {{selected}}</mat-label>
         <input formControlName="nombre" type="number" matInput placeholder="38200600">
       </mat-form-field>
     </p>
