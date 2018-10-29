@@ -27,6 +27,8 @@ import {
   imports: [
     MatButtonModule,
     MatMenuModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     MatToolbarModule,
     MatIconModule,
     MatCardModule,
