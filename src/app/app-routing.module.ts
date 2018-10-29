@@ -8,6 +8,7 @@ import { EstablecimientosComponent } from 'src/app/components/establecimientos/e
 import { HomeComponent } from 'src/app/components/home/home.component';
 import { LiquidacionesComponent } from 'src/app/components/liquidaciones/liquidaciones.component';
 import { TarjetasComponent } from 'src/app/components/tarjetas/tarjetas.component';
+import { CrearTarjetaComponent } from 'src/app/components/tarjetas/crear-tarjeta/crear-tarjeta.component';
 import { NavbarComponent } from 'src/app/components/navbar/navbar.component';
 import { from } from 'rxjs';
 
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'liquidaciones', component: LiquidacionesComponent, pathMatch: 'full', data: { title: 'Liquidaciones' } },
   { path: 'establecimientos', component: EstablecimientosComponent, pathMatch: 'full', data: { title: 'Establecimientos' } },
   { path: 'tarjetas', component: TarjetasComponent, pathMatch: 'full', data: { title: 'Tarjetas' } },
+  { path: 'tarjetas/crear', component: CrearTarjetaComponent, pathMatch: 'full', data: { title: 'Crear tarjeta' } },
   { path: '**', redirectTo: 'home', pathMatch: 'full' },
 ];
 

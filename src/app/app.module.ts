@@ -10,13 +10,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // Components
 import { ClientesComponent } from 'src/app/components/clientes/clientes.component';
-import { TarjetasComponent } from 'src/app/components/tarjetas/tarjetas.component';
 import { CobranzasComponent } from 'src/app/components/cobranzas/cobranzas.component';
 import { ConsumosComponent } from 'src/app/components/consumos/consumos.component';
 import { EstablecimientosComponent } from 'src/app/components/establecimientos/establecimientos.component';
 import { HomeComponent } from 'src/app/components/home/home.component';
 import { LiquidacionesComponent } from 'src/app/components/liquidaciones/liquidaciones.component';
 import { NavbarComponent } from 'src/app/components/navbar/navbar.component';
+import { TarjetasComponent } from 'src/app/components/tarjetas/tarjetas.component';
+import { CrearTarjetaComponent } from 'src/app/components/tarjetas/crear-tarjeta/crear-tarjeta.component';
 
 // Services
 import { RestService } from './services/rest/rest.service';
@@ -28,11 +29,12 @@ import { RestService } from './services/rest/rest.service';
     NavbarComponent,
     ClientesComponent,
     CobranzasComponent,
-    TarjetasComponent,
     ConsumosComponent,
     EstablecimientosComponent,
     HomeComponent,
     LiquidacionesComponent,
+    TarjetasComponent,
+    CrearTarjetaComponent,
   ],
   imports: [
     BrowserModule,
