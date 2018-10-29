@@ -1,0 +1,48 @@
+<form novalidate [formGroup]="formGroup" (onSubmit)="formGroup.valid">
+  <mat-card>
+    <!-- nombre -->
+    <p>
+      <mat-form-field appearance="outline">
+        <mat-label>Nombre</mat-label>
+        <input formControlName="nombre" type="text" matInput placeholder="Kevin">
+      </mat-form-field>
+    </p>
+    <!-- apellido -->
+    <p>
+      <mat-form-field appearance="outline">
+        <mat-label>Apellido</mat-label>
+        <input formControlName="apellido" type="text" matInput placeholder="Cat">
+      </mat-form-field>
+    </p>
+    <!-- tipo de doc -->
+    <h4>Tipo de documento:</h4>
+    <mat-form-field appearance="outline">
+      <mat-select [(value)]="selected" formControlName="tipo" type="text">
+        <mat-option value="DNI">DNI</mat-option>
+        <mat-option value="CI">CI</mat-option>
+        <mat-option value="LE">LE</mat-option>
+        <mat-option value="LC">LC</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <!-- numero doc -->
+    <p *ngIf="selected">Ingrese {{selected}}</p>
+    <p *ngIf="selected">
+      <mat-form-field appearance="outline">
+        <mat-label>Numero de documento:</mat-label>
+        <input formControlName="nombre" type="number" matInput placeholder="38200600">
+      </mat-form-field>
+    </p>
+    <!-- fecha nac -->
+    <p>
+      <mat-form-field>
+        <input formControlName="nacimiento" type="text" matInput [matDatepicker]="picker" placeholder="Fecha de nacimiento">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker startView="year" [startAt]="startDate"></mat-datepicker>
+      </mat-form-field>
+    </p>
+
+  </mat-card>
+  <button mat-fab color="primary" [disabled]="false">
+    <mat-icon>check</mat-icon>
+  </button>
+</form>

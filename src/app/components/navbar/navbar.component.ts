@@ -10,7 +10,7 @@ import { Router, ActivationEnd } from '@angular/router';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent {
-  title = 'Roster Bots';
+  title = 'Entidad de Credito';
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches)

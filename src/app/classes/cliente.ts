@@ -7,7 +7,7 @@ export class Cliente {
   documento_tipo: string;
   documento_numero: string;
   productos: Producto[];
-  consumos: Consumo[];
+  fecha_nac: string;
 
 }
 
