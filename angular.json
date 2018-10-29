@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "RosterBotsWeb": {
+    "IntegracionWeb": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/RosterBotsWeb",
+            "outputPath": "dist/IntegracionWeb",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -57,18 +57,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "RosterBotsWeb:build"
+            "browserTarget": "IntegracionWeb:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "RosterBotsWeb:build:production"
+              "browserTarget": "IntegracionWeb:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "RosterBotsWeb:build"
+            "browserTarget": "IntegracionWeb:build"
           }
         },
         "test": {
@@ -105,7 +105,7 @@
         }
       }
     },
-    "RosterBotsWeb-e2e": {
+    "IntegracionWeb-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "architect": {
@@ -113,11 +113,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "RosterBotsWeb:serve"
+            "devServerTarget": "IntegracionWeb:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "RosterBotsWeb:serve:production"
+              "devServerTarget": "IntegracionWeb:serve:production"
             }
           }
         },
@@ -133,5 +133,5 @@
       }
     }
   },
-  "defaultProject": "RosterBotsWeb"
+  "defaultProject": "IntegracionWeb"
 }
