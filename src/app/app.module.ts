@@ -23,6 +23,7 @@ import { NavbarComponent } from 'src/app/components/navbar/navbar.component';
 import { TarjetasComponent } from 'src/app/components/tarjetas/tarjetas.component';
 import { CrearTarjetaComponent } from 'src/app/components/tarjetas/crear-tarjeta/crear-tarjeta.component';
 import { ModificarTarjetaComponent } from 'src/app/components/tarjetas/modificar-tarjeta/modificar-tarjeta.component';
+import { ModificarEstablecimientosComponent } from 'src/app/components/establecimientos/modificar-establecimientos/modificar-establecimientos.component';
 
 // Services
 import { RestService } from './services/rest/rest.service';
@@ -44,7 +45,8 @@ import { RestService } from './services/rest/rest.service';
     LiquidacionesComponent,
     TarjetasComponent,
     CrearTarjetaComponent,
-    ModificarTarjetaComponent
+    ModificarTarjetaComponent,
+    ModificarEstablecimientosComponent,
   ],
   imports: [
     BrowserModule,

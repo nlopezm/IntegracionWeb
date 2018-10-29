@@ -9,6 +9,7 @@ import { ConsumosComponent } from 'src/app/components/consumos/consumos.componen
 import { CrearConsumoComponent } from 'src/app/components/consumos/crear-consumo/crear-consumo.component';
 import { EstablecimientosComponent } from 'src/app/components/establecimientos/establecimientos.component';
 import { CrearEstablecimientoComponent } from 'src/app/components/establecimientos/crear-establecimiento/crear-establecimiento.component';
+import { ModificarEstablecimientosComponent } from 'src/app/components/establecimientos/modificar-establecimientos/modificar-establecimientos.component';
 import { HomeComponent } from 'src/app/components/home/home.component';
 import { LiquidacionesComponent } from 'src/app/components/liquidaciones/liquidaciones.component';
 import { TarjetasComponent } from 'src/app/components/tarjetas/tarjetas.component';
@@ -26,6 +27,7 @@ const routes: Routes = [
   { path: 'consumos', component: ConsumosComponent, pathMatch: 'full', data: { title: 'Consumos' } },
   { path: 'consumos/crear', component: CrearConsumoComponent, pathMatch: 'full', data: { title: 'Generar consumo' } },
   { path: 'establecimientos', component: EstablecimientosComponent, pathMatch: 'full', data: { title: 'Establecimientos' } },
+  { path: 'establecimientos/modificar', component: ModificarEstablecimientosComponent, pathMatch: 'full', data: { title: 'Modificar establecimiento' } },
   { path: 'establecimientos/crear', component: CrearEstablecimientoComponent, pathMatch: 'full', data: { title: 'Crear establecimiento' } },
   { path: 'tarjetas', component: TarjetasComponent, pathMatch: 'full', data: { title: 'Tarjetas' } },
   { path: 'tarjetas/crear', component: CrearTarjetaComponent, pathMatch: 'full', data: { title: 'Crear tarjeta' } },
