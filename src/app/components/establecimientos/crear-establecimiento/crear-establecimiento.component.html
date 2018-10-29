@@ -1,3 +1,79 @@
-<p>
-  crear-establecimiento works!
-</p>
+<form class="container">
+
+  <mat-card style="margin-top:10px">
+    <mat-card-title>
+      Creación del establecimiento
+    </mat-card-title>
+  </mat-card>
+
+  <ul class="nav">
+    <mat-card class="center">
+      <!-- nombre -->
+      <li>
+        <mat-form-field appearance="outline">
+          <mat-label>Nombre</mat-label>
+          <input matInput placeholder="Kevin">
+        </mat-form-field>
+      </li>
+      <!-- apellido -->
+      <li>
+        <mat-form-field appearance="outline">
+          <mat-label>Apellido</mat-label>
+          <input matInput placeholder="Cat">
+        </mat-form-field>
+      </li>
+      <!-- tipo de doc -->
+      <li>
+        <!-- <h4>Tipo de documento:</h4> -->
+        <mat-form-field appearance="outline">
+          <mat-select [(value)]="selected" placeholder="Tipo de documento">
+            <mat-option value="DNI">DNI</mat-option>
+            <mat-option value="CI">CI</mat-option>
+            <mat-option value="LE">LE</mat-option>
+            <mat-option value="LC">LC</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </li>
+
+      <!-- numero doc -->
+      <li>
+        <mat-form-field appearance="outline">
+          <mat-label>Numero de documento:</mat-label>
+          <input matInput placeholder="38200600">
+        </mat-form-field>
+      </li>
+      <!-- productos -->
+      <li>
+        <mat-form-field appearance="outline">
+          <mat-select placeholder="Tarjetas de credito" [formControl]="productos" multiple>
+            <mat-select-trigger>
+              {{productos.value ? productos.value[0] : ''}}
+              <span *ngIf="productos.value?.length > 1" class="example-additional-selection">
+                (+{{productos.value.length - 1}} {{productos.value?.length === 2 ? 'other' : 'others'}})
+              </span>
+            </mat-select-trigger>
+            <mat-option *ngFor="let productos of productosList" [value]="productos">{{productos}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </li>
+      <!-- fechas nacimiento -->
+      <li>
+        <mat-form-field appearance="outline" >
+          <input matInput [matDatepicker]="picker" placeholder="Fecha de nacimiento">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker startView="year" [startAt]="startDate"></mat-datepicker>
+        </mat-form-field>
+      </li>
+      <!-- Guardar -->
+      <br>
+      <br>
+      <button mat-raised-button matTooltip="Info about the action" aria-label="Button that displays a tooltip when focused or hovered over" style="margin-right:10px;">
+        Guardar
+      </button>
+      <button mat-raised-button matTooltip="Info about the action" aria-label="Button that displays a tooltip when focused or hovered over">
+        Cancelar
+      </button>
+
+    </mat-card>
+  </ul>
+</form>

@@ -1,5 +1,4 @@
-import { Component} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-establecimientos',
@@ -7,11 +6,5 @@ import {FormControl} from '@angular/forms';
   styleUrls: ['./establecimientos.component.scss']
 })
 export class EstablecimientosComponent {
-
-  productos = new FormControl();
- 
-  productosList: string[] = ['39048329473242374', '984127412471','7381267438129367'];
-
-  startDate = new Date(1920, 0, 1);
 
 }
