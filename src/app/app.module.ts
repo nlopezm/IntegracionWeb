@@ -21,6 +21,7 @@ import { NavbarComponent } from 'src/app/components/navbar/navbar.component';
 
 // Services
 import { RestService } from './services/rest/rest.service';
+import { ModificarEstablecimientosComponent } from './components/establecimientos/modificar-establecimientos/modificar-establecimientos.component';
 
 
 @NgModule({
@@ -35,6 +36,7 @@ import { RestService } from './services/rest/rest.service';
     HomeComponent,
     LiquidacionesComponent,
     CrearEstablecimientoComponent,
+    ModificarEstablecimientosComponent
   ],
   imports: [
     BrowserModule,
