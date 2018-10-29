@@ -19,6 +19,8 @@ export class CrearTarjetaComponent {
       fecha_cierre: ['', [Validators.required]],
       categoria: ['', [Validators.required]],
       monto_limite: ['', [Validators.required]],
+      tipo: ['', [Validators.required]],
+      documento: ['', [Validators.required]],
     });
   }
 
