@@ -13,6 +13,7 @@ import { ClientesComponent } from 'src/app/components/clientes/clientes.componen
 import { CrearClienteComponent } from 'src/app/components/clientes/crear-cliente/crear-cliente.component';
 import { CobranzasComponent } from 'src/app/components/cobranzas/cobranzas.component';
 import { ConsumosComponent } from 'src/app/components/consumos/consumos.component';
+import { CrearConsumoComponent } from 'src/app/components/consumos/crear-consumo/crear-consumo.component';
 import { EstablecimientosComponent } from 'src/app/components/establecimientos/establecimientos.component';
 import { CrearEstablecimientoComponent } from 'src/app/components/establecimientos/crear-establecimiento/crear-establecimiento.component';
 import { HomeComponent } from 'src/app/components/home/home.component';
@@ -33,6 +34,7 @@ import { RestService } from './services/rest/rest.service';
     CrearClienteComponent,
     CobranzasComponent,
     ConsumosComponent,
+    CrearConsumoComponent,
     EstablecimientosComponent,
     CrearEstablecimientoComponent,
     HomeComponent,
