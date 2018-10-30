@@ -29,9 +29,12 @@ import { ModificarEstablecimientosComponent } from 'src/app/components/estableci
 import { ConfirmDialogComponent } from 'src/app/components/dialogs/confirm-dialog/confirm-dialog.component';
 
 // Services
-import { RestService } from './services/rest/rest.service';
 import { ClienteService } from './services/rest/cliente.service';
 import { EstablecimientoService } from './services/rest/establecimiento.service';
+import { CobranzaService } from './services/rest/cobranza.service';
+import { ConsumoService } from './services/rest/consumo.service';
+import { LiquidacionService } from './services/rest/liquidacion.service';
+import { TarjetaService } from './services/rest/tarjeta.service';
 
 @NgModule({
   declarations: [
@@ -63,9 +66,12 @@ import { EstablecimientoService } from './services/rest/establecimiento.service'
     ReactiveFormsModule,
   ],
   providers: [
-    RestService,
     ClienteService,
+    CobranzaService,
+    ConsumoService,
     EstablecimientoService,
+    LiquidacionService,
+    TarjetaService,
   ],
   bootstrap: [AppComponent],
   entryComponents: [ConfirmDialogComponent]
