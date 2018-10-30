@@ -1,1 +1,27 @@
-Consumos works
+<mat-spinner *ngIf="loading"></mat-spinner>
+<mat-nav-list *ngIf="consumos">
+  <mat-list-item *ngFor="let consumo of consumosFiltered; let i=index">
+    <a>{{consumo.nombre}}</a>
+    <button mat-icon-button (click)="deleteConsumo(i)">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </mat-list-item>
+</mat-nav-list>
+<a [routerLink]="['/consumos', 'crear']">
+  <button mat-fab color="primary" [disabled]="loading">
+    <mat-icon>add</mat-icon>
+  </button>
+</a>
+<div *ngIf="!loading && !consumos.length && !search.length">
+  <div class="no-consumos-container">
+    <div style="width:100%;height:100%;">
+      <p>No hay ningún consumo. Desea crear uno?</p>
+      <br>
+      <a [routerLink]="['/consumos', 'crear']">
+        <button mat-flat-button color="primary">
+          Crear consumo
+        </button>
+      </a>
+    </div>
+  </div>
+</div>
