@@ -31,4 +31,8 @@ export class ClienteService {
     return this.http.put(this.url + '/' + id, cliente);
   }
 
+  postCliente(cliente: any): Observable<{}> {
+    return this.http.post(this.url, cliente);
+  }
+
 }
