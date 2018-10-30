@@ -35,6 +35,7 @@ import { CobranzaService } from './services/rest/cobranza.service';
 import { ConsumoService } from './services/rest/consumo.service';
 import { LiquidacionService } from './services/rest/liquidacion.service';
 import { TarjetaService } from './services/rest/tarjeta.service';
+import { RestService } from './services/rest/rest.service';
 
 @NgModule({
   declarations: [
@@ -72,6 +73,7 @@ import { TarjetaService } from './services/rest/tarjeta.service';
     EstablecimientoService,
     LiquidacionService,
     TarjetaService,
+    RestService,
   ],
   bootstrap: [AppComponent],
   entryComponents: [ConfirmDialogComponent]

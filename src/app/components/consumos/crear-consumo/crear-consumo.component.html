@@ -31,6 +31,15 @@
         </mat-option>
       </mat-autocomplete>
     </mat-form-field>
+    <mat-form-field style="width: 68%">
+      <input formControlName="fecha" type="text" matInput [matDatepicker]="picker" placeholder="Fecha del consumo">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker startView="year"></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field style="width: 28%">
+      <mat-label>Código de seguridad</mat-label>
+      <input formControlName="codigoSeguridad" type="number" matInput placeholder="Cód. seguridad">
+    </mat-form-field>
   </mat-card>
   <button mat-fab color="primary" [disabled]="false" (click)="create()">
     <mat-icon>check</mat-icon>

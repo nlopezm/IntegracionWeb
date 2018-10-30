@@ -4,6 +4,7 @@ import { ClienteService } from '../../../services/rest/cliente.service';
 import { EstablecimientoService } from '../../../services/rest/establecimiento.service';
 import { ConsumoService } from '../../../services/rest/consumo.service';
 import { Router } from '@angular/router';
+import { RestService } from '../../../services/rest/rest.service';
 
 @Component({
   selector: 'app-crear-consumo',
@@ -21,14 +22,15 @@ export class CrearConsumoComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private clienteService: ClienteService,
     private establecimientoService: EstablecimientoService,
-    private consumoService: ConsumoService, private router: Router) {
+    private consumoService: ConsumoService, private router: Router, private restService: RestService) {
+
     this.formGroup = this.fb.group({
       monto: ['', [Validators.required]],
       clienteId: ['', [Validators.required]],
       tarjetaId: ['', [Validators.required]],
       fecha: ['', [Validators.required]],
       idEstablecimiento: ['', [Validators.required]],
-      codigoSeguridad: ['', [Validators.required]],
+      codigoSeguridad: ['', [Validators.required, Validators.min(100), Validators.max(999)]],
     });
     this.clientesFiltered = this.clientes;
   }
@@ -57,8 +59,14 @@ export class CrearConsumoComponent implements OnInit {
   onClienteSelected(event) {
     const clienteId = event.option.value;
     const cliente = this.clientes.filter((cliente) => cliente.id === clienteId)[0];
-    this.tarjetas = cliente.tarjetas || [];
-    this.tarjetasFiltered = this.tarjetas;
+    this.restService.get(cliente._links.tarjetas.href).subscribe(
+      (data) => {
+        this.tarjetas = data.tarjetas || [];
+        this.tarjetasFiltered = this.tarjetas;
+      },
+      () => { }
+    );
+
   }
 
   filterEstablecimientos(search) {
@@ -68,8 +76,10 @@ export class CrearConsumoComponent implements OnInit {
   }
 
   create() {
+    console.log(this.formGroup.value);
     if (!this.formGroup.valid)
       return;
+
     this.consumoService.postConsumo(this.formGroup.value).subscribe(
       () => {
         this.router.navigateByUrl('/consumos');
