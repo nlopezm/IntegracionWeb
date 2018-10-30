@@ -9,9 +9,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class LiquidacionesComponent{
 search = '';
   liquidacionesTotales: any = [
-    { id: 1, fechaCierre: '20/03/2019', fechaVencimiento: '18/04/2019' },
-    { id: 2, fechaCierre: '10/03/2019', fechaVencimiento: '25/03/2019' },
-    { id: 3, fechaCierre: '01/02/2019', fechaVencimiento: '30/03/2019' },
+    { id: 1, mesCierre: new Date('20/03/2019').getMonth, fechaCierre: '20/03/2019', fechaVencimiento: '18/04/2019'},
+    { id: 2, mesCierre: new Date('10/03/2019').getMonth, fechaCierre: '10/03/2019', fechaVencimiento: '25/03/2019'},
+    { id: 3, mesCierre: new Date('01/02/2019').getMonth, fechaCierre: '01/02/2019', fechaVencimiento: '30/03/2019'},
   ];
   liquidaciones: any;
   tarjetasCred: any = [
@@ -34,6 +34,12 @@ search = '';
     });
   }
 
-  
+  filtroMesCierre() {
+    this.liquidaciones = this.liquidacionesTotales.filter((liquidaciones) => {
+      const mesCierre = (this.liquidaciones.mesCierre);
+      return (mesCierre.indexOf(this.search.toLowerCase()) > -1)
+        || (mesCierre.documento && mesCierre.documento.toString().indexOf(this.search.toLowerCase()) > -1);
+    });
+  }
 
 }

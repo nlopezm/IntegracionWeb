@@ -43,7 +43,7 @@
         <mat-form-field appearance="outline">
           <mat-label>Mes cierre</mat-label>
           <mat-select [(value)]="mesCierre" formControlName="tipo" type="number">
-            <mat-option *ngFor="let mesCierre of [1,2,3,4,5,6,7,8,9,10,11,12]" value="{{mesCierre}}">{{mesCierre}}</mat-option>
+            <mat-option (keyup)='filtroMesCierre()' *ngFor="let mesCierre of [1,2,3,4,5,6,7,8,9,10,11,12]" value="{{mesCierre}}">{{mesCierre}}</mat-option>
           </mat-select>
         </mat-form-field>
 
@@ -79,6 +79,8 @@
     </ul>
 
   </form>
+
+  <!-- Muestra de liquidaciones -->
   <mat-card>
     <mat-list-item *ngFor="let liquidacion of liquidaciones; let i=index">
 
