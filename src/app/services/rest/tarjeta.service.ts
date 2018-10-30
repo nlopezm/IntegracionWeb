@@ -15,7 +15,7 @@ export class TarjetaService {
 
   getTarjetas(): Observable<{}> {
     return this.http.get(this.url).pipe(
-      map(res => res['_embedded'].tarjetas),
+      map(res => res  ['_embedded'].tarjetas),
       catchError(err => of(err)));
   }
 

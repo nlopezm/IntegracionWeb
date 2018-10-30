@@ -1,3 +1,21 @@
+.mat-fab {
+  right: 0px;
+  bottom: 0px;
+  position: fixed;
+  margin: 20px;
+}
+
+.mat-spinner {
+  margin: 25% auto;
+}
+.no-clients-container {
+  width: 100%;
+  text-align: center;
+  margin: 20% auto;
+}
+.mat-form-field {
+  width: 100%;
+}
 
   .nav {
     list-style-type: none;
@@ -9,12 +27,6 @@
     display: inline-block;
     // font-size: 20px;
     padding: 20px;
-  }
-  .mat-fab {
-    right: 0px;
-    bottom: 0px;
-    position: fixed;
-    margin: 20px;
   }
   .tamanoLimite{
     width: 200px;
