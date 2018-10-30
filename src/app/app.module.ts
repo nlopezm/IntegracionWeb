@@ -25,6 +25,9 @@ import { CrearTarjetaComponent } from 'src/app/components/tarjetas/crear-tarjeta
 import { ModificarTarjetaComponent } from 'src/app/components/tarjetas/modificar-tarjeta/modificar-tarjeta.component';
 import { ModificarEstablecimientosComponent } from 'src/app/components/establecimientos/modificar-establecimientos/modificar-establecimientos.component';
 
+//Dialogs
+import { ConfirmDialogComponent } from 'src/app/components/dialogs/confirm-dialog/confirm-dialog.component';
+
 // Services
 import { RestService } from './services/rest/rest.service';
 
@@ -47,6 +50,7 @@ import { RestService } from './services/rest/rest.service';
     CrearTarjetaComponent,
     ModificarTarjetaComponent,
     ModificarEstablecimientosComponent,
+    ConfirmDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -60,6 +64,7 @@ import { RestService } from './services/rest/rest.service';
   providers: [
     RestService,
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [ConfirmDialogComponent]
 })
 export class AppModule { }

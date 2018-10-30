@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
-import { using } from 'rxjs';
-
+import { Component, Inject } from '@angular/core';
+import { MatDialog } from '@angular/material';
+import { ConfirmDialogComponent } from 'src/app/components/dialogs/confirm-dialog/confirm-dialog.component';
 @Component({
   selector: 'app-clientes',
   templateUrl: './clientes.component.html',
@@ -17,11 +17,21 @@ export class ClientesComponent {
   clientes: any;
   loading = false;
 
-  constructor() {
+  constructor(public dialog: MatDialog) {
     this.clientes = this.clientesTotales;
   }
 
   deleteCliente(i: number) {
+    this.dialog.open(ConfirmDialogComponent, {
+      data: {
+        titulo: 'Eliminar cliente',
+        descripcion: 'Estás seguro que querés eliminar a este cliente?',
+        buttons: [
+          { text: 'Cancelar', function: function () { console.log('Cancelado'); } },
+          { text: 'Aceptar', function: function () { console.log('Borrado'); } }
+        ]
+      }
+    });
 
   }
 
