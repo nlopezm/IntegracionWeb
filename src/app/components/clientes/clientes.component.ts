@@ -27,29 +27,24 @@ export class ClientesComponent implements OnInit {
   }
 
   deleteCliente(id: number) {
-    this.dialog.open(ConfirmDialogComponent, {
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       data: {
         titulo: 'Eliminar cliente',
-        descripcion: 'Estás seguro que querés eliminar a este cliente?',
-        buttons: [
-          { text: 'Cancelar', function: function () { console.log('Cancelado'); } },
-          {
-            text: 'Aceptar', function: this.borrar(id)
-          }
-        ]
+        descripcion: 'Estás seguro que querés eliminar a este cliente?'
       }
     });
 
-  }
-
-  borrar(id: number) {
-    this.rest.deleteCliente(id).subscribe(
-      () => {
-        this.clientes = this.clientes.filter((cliente) => cliente.id !== id);
-        this.clientesTotales = this.clientes.filter((cliente) => cliente.id !== id);
-        alert('Cliente borrado');
-      }, (e) => console.log(e)
-    );
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.rest.deleteCliente(id).subscribe(
+          () => {
+            this.clientes = this.clientes.filter((cliente) => cliente.id !== id);
+            this.clientesTotales = this.clientes.filter((cliente) => cliente.id !== id);
+            alert('Cliente borrado');
+          }, (e) => console.log(e)
+        );
+      }
+    });
   }
 
   searchCliente() {

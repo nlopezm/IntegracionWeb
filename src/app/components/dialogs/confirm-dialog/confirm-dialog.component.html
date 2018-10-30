@@ -3,7 +3,10 @@
   {{data.descripcion}}
 </div>
 <div mat-dialog-actions>
-  <button mat-button *ngFor="let button of data.buttons" [mat-dialog-close] (click)="button.function()">
-    {{button.text}}
+  <button mat-button mat-dialog-close>
+    Cancelar
+  </button>
+  <button mat-button [mat-dialog-close]="true">
+    Aceptar
   </button>
 </div>
