@@ -1,20 +1,38 @@
-<form novalidate [formGroup]="formGroup" (onSubmit)="formGroup.valid">
+<form novalidate [formGroup]="formGroup" (onSubmit)="formGroup.valid && create()">
   <mat-card>
     <mat-form-field>
       <mat-label>Monto ($)</mat-label>
       <input formControlName="monto" type="number" matInput placeholder="Monto ($)">
     </mat-form-field>
-    <mat-form-field class="example-full-width">
-      <input formControlName="cliente" type="text" placeholder="Cliente" matInput [matAutocomplete]="auto" (keyup)="filter(search)"
-        [(ngModel)]="search">
-      <mat-autocomplete #auto="matAutocomplete">
-        <mat-option *ngFor="let cliente of clientesFiltered" [value]="cliente.documento || cliente.id">
+    <mat-form-field>
+      <input formControlName="idEstablecimiento" type="text" placeholder="Establecimiento" matInput [matAutocomplete]="auto3" (keyup)="filterEstablecimientos(searchEstablecimientos)"
+        [(ngModel)]="searchEstablecimientos">
+      <mat-autocomplete #auto3="matAutocomplete">
+        <mat-option *ngFor="let establecimiento of establecimientosFiltered" [value]="establecimiento.id">
+          {{establecimiento.razonSocial}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+    <mat-form-field>
+      <input formControlName="clienteId" type="text" placeholder="Cliente" matInput [matAutocomplete]="auto" (keyup)="filterClientes(searchClientes)"
+        [(ngModel)]="searchClientes">
+      <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onClienteSelected($event)">
+        <mat-option *ngFor="let cliente of clientesFiltered" [value]="cliente.id">
           {{cliente.nombre}} {{cliente.apellido}}
         </mat-option>
       </mat-autocomplete>
     </mat-form-field>
+    <mat-form-field *ngIf="tarjetas.length">
+      <input formControlName="tarjetaId" type="text" placeholder="Tarjeta" matInput [matAutocomplete]="auto2" (keyup)="filterTarjetas(searchTarjetas)"
+        [(ngModel)]="searchTarjetas">
+      <mat-autocomplete #auto2="matAutocomplete">
+        <mat-option *ngFor="let tarjeta of tarjetasFiltered" [value]="tarjeta.nroTarjeta">
+          {{tarjeta.nroTarjeta}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
   </mat-card>
-  <button mat-fab color="primary" [disabled]="false">
+  <button mat-fab color="primary" [disabled]="false" (click)="create()">
     <mat-icon>check</mat-icon>
   </button>
 </form>
