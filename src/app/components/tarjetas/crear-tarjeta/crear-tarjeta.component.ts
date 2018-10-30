@@ -25,7 +25,6 @@ export class CrearTarjetaComponent implements OnInit {
       diaCierre: ['', [Validators.required, Validators.min(1), Validators.max(30)]],
       categoria: ['', [Validators.required]],
       montoLimite: ['', [Validators.required]],
-      tipo: ['', [Validators.required]],
       clienteId: ['', [Validators.required]],
     });
   }
