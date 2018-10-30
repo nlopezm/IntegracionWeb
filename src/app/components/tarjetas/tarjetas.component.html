@@ -4,8 +4,8 @@
     <input (keyup)='searchTarjeta()' type="text" matInput placeholder="Buscar tarjeta" [(ngModel)]="search">
   </mat-form-field>
   <mat-list-item *ngFor="let tarjeta of tarjetasFiltered; let i=index">
-    <a matLine [routerLink]="['/tarjetas', tarjeta.id]">{{tarjeta.numero}}</a>
-    <button mat-icon-button (click)="deleteTarjeta(i)">
+    <a matLine [routerLink]="['/tarjetas', tarjeta.id]">{{tarjeta.nroTarjeta}}</a>
+    <button mat-icon-button (click)="deleteTarjeta(tarjeta.id)">
       <mat-icon>delete</mat-icon>
     </button>
     <a [routerLink]="['/tarjetas', tarjeta.id]">
