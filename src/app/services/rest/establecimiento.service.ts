@@ -15,7 +15,7 @@ export class EstablecimientoService {
 
   getEstablecimientos(): Observable<{}> {
     return this.http.get(this.url).pipe(
-      map(res => res._embedded.establecimientos),
+      map(res => res['_embedded'].establecimientos),
       catchError(err => of(err)));
   }
 
