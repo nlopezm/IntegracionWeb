@@ -1,53 +1,24 @@
-<form class="container" novalidate [formGroup]="formGroup" (onSubmit)="formGroup.valid">
+<mat-spinner *ngIf="loading"></mat-spinner>
+<form class="container" novalidate [formGroup]="formGroup" (onSubmit)="formGroup.valid && update()" *ngIf="!loading">
   <ul class="nav">
     <mat-card class="center">
       <!-- nombre -->
       <li>
         <mat-form-field appearance="outline">
           <mat-label>Nombre</mat-label>
-          <input formControlName="nombre" type="text" matInput placeholder="Kevin">
+          <input formControlName="nombre" type="text" matInput placeholder="Kevin" [(ngModel)]="cliente.nombre">
         </mat-form-field>
       </li>
       <!-- apellido -->
       <li>
         <mat-form-field appearance="outline">
           <mat-label>Apellido</mat-label>
-          <input formControlName="apellido" type="text" matInput placeholder="Cat">
+          <input formControlName="apellido" type="text" matInput placeholder="Cat" [(ngModel)]="cliente.apellido">
         </mat-form-field>
       </li>
-      <!-- tipo de doc -->
-      <br>
-      <li>
-        <mat-form-field appearance="outline">
-          <mat-label>Tipo de documento</mat-label>
-          <mat-select [(value)]="selected" formControlName="tipo" type="text">
-            <mat-option value="DNI">DNI</mat-option>
-            <mat-option value="CI">CI</mat-option>
-            <mat-option value="LE">LE</mat-option>
-            <mat-option value="LC">LC</mat-option>
-          </mat-select>
-        </mat-form-field>
-      </li>
-      <!-- numero doc -->
-      <li>
-          <mat-form-field appearance="outline" *ngIf="selected">
-            <mat-label>Numero de {{selected}}</mat-label>
-            <input formControlName="nombre" type="number" matInput placeholder="38200600">
-          </mat-form-field>
-      </li>
-      <br>
-      <!-- fecha nac -->
-      <li>
-        <mat-form-field appearance="outline">
-          <input formControlName="nacimiento" type="text" matInput [matDatepicker]="picker" placeholder="Fecha de nacimiento">
-          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-datepicker #picker startView="year" [startAt]="startDate"></mat-datepicker>
-        </mat-form-field>
-      </li>
-
     </mat-card>
   </ul>
-  <button mat-fab color="primary" [disabled]="false">
+  <button mat-fab color="primary" [disabled]="false" (click)="update()">
     <mat-icon>check</mat-icon>
   </button>
 </form>

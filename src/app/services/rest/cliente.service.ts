@@ -27,4 +27,8 @@ export class ClienteService {
     return this.http.delete(this.url + '/' + id);
   }
 
+  updateCliente(id: number, cliente: any): Observable<{}> {
+    return this.http.put(this.url + '/' + id, cliente);
+  }
+
 }

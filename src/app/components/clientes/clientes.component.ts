@@ -34,7 +34,7 @@ export class ClientesComponent implements OnInit {
         buttons: [
           { text: 'Cancelar', function: function () { console.log('Cancelado'); } },
           {
-            text: 'Aceptar', function: function () { this.borrar(id); }
+            text: 'Aceptar', function: this.borrar(id)
           }
         ]
       }
