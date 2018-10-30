@@ -3,29 +3,29 @@
   <mat-card class="center">
     <mat-form-field appearance="outline" style="width: 68%">
       <mat-label>Número de tarjeta</mat-label>
-      <input formControlName="numero" type="number" matInput placeholder="Número de tarjeta">
+      <input formControlName="nroTarjeta" type="number" matInput placeholder="Número de tarjeta">
     </mat-form-field>
 
     <mat-form-field appearance="outline" style="width: 28%">
       <mat-label>Código de seguridad</mat-label>
-      <input formControlName="cod_seguridad" type="number" matInput placeholder="Cód. seguridad">
+      <input formControlName="codigoSeguridad" type="number" matInput placeholder="Cód. seguridad">
     </mat-form-field>
     <br>
     <mat-form-field style="width: 48%">
-      <input formControlName="valido_desde" type="text" matInput [matDatepicker]="picker" placeholder="Válida desde">
+      <input formControlName="fechaValidaDesde" type="text" matInput [matDatepicker]="picker" placeholder="Válida desde">
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker startView="year"></mat-datepicker>
     </mat-form-field>
 
     <mat-form-field style="width: 48%">
-      <input formControlName="valido_hasta" type="text" matInput [matDatepicker]="picker2" placeholder="Válida hasta">
+      <input formControlName="fechaValidaHasta" type="text" matInput [matDatepicker]="picker2" placeholder="Válida hasta">
       <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
       <mat-datepicker #picker2 startView="year"></mat-datepicker>
     </mat-form-field>
 
     <mat-form-field appearance="outline" style="width: 48%">
       <mat-label>Día de cierre</mat-label>
-      <input formControlName="fecha_cierre" type="number" matInput placeholder="Día de cierre">
+      <input formControlName="diaCierre" type="number" matInput placeholder="Día de cierre">
     </mat-form-field>
 
     <mat-form-field appearance="outline" style="width: 48%">
@@ -35,7 +35,7 @@
 
     <mat-form-field appearance="outline">
       <mat-label>Monto límite</mat-label>
-      <input formControlName="monto_limite" type="number" matInput placeholder="Monto límite">
+      <input formControlName="montoLimite" type="number" matInput placeholder="Monto límite">
     </mat-form-field>
 
     <mat-form-field appearance="outline">
@@ -48,15 +48,15 @@
       </mat-select>
     </mat-form-field>
 
-    <mat-form-field appearance="outline" *ngIf="selected">
-      <mat-label>Numero de {{selected}}</mat-label>
-      <input formControlName="documento" type="number" matInput placeholder="38200600">
+    <mat-form-field class="example-full-width">
+      <input formControlName="clienteId" type="text" placeholder="Cliente" matInput [matAutocomplete]="auto" (keyup)="filter(search)"
+        [(ngModel)]="search">
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let cliente of clientesFiltered" [value]="cliente.id">
+          {{cliente.nombre}} {{cliente.apellido}}
+        </mat-option>
+      </mat-autocomplete>
     </mat-form-field>
-    <mat-form-field appearance="outline" *ngIf="selected">
-      <mat-label>JORGE</mat-label>
-      <input formControlName="nombre" type="number" matInput placeholder="JORGE" disabled>
-    </mat-form-field>
-
   </mat-card>
 
   <button mat-fab color="primary" [disabled]="false" style="position:right">

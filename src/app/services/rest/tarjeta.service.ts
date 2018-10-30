@@ -31,8 +31,8 @@ export class TarjetaService {
     return this.http.put(this.url + '/' + id, tarjetas);
   }
 
-  postTarjeta(tarjetas: any): Observable<{}> {
-    return this.http.post(this.url, tarjetas);
+  postTarjeta(tarjeta: any): Observable<{}> {
+    return this.http.post(this.url, tarjeta);
   }
 
 }
