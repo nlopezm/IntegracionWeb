@@ -31,6 +31,7 @@ import { ConfirmDialogComponent } from 'src/app/components/dialogs/confirm-dialo
 // Services
 import { RestService } from './services/rest/rest.service';
 import { ClienteService } from './services/rest/cliente.service';
+import { EstablecimientoService } from './services/rest/establecimiento.service';
 
 @NgModule({
   declarations: [
@@ -64,6 +65,7 @@ import { ClienteService } from './services/rest/cliente.service';
   providers: [
     RestService,
     ClienteService,
+    EstablecimientoService,
   ],
   bootstrap: [AppComponent],
   entryComponents: [ConfirmDialogComponent]
