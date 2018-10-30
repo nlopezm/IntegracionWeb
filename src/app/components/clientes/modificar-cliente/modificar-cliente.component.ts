@@ -35,10 +35,12 @@ export class ModificarClienteComponent implements OnInit {
   }
 
   update() {
+    if (!this.formGroup.valid)
+      return;
     this.rest.updateCliente(this.clienteId, this.cliente).subscribe(() => {
       this.router.navigateByUrl('/clientes');
-      alert ('Cliente actualizado!');
-    }, () => {});
+      alert('Cliente actualizado!');
+    }, () => { });
   }
 
 }

@@ -34,9 +34,11 @@ export class ModificarEstablecimientosComponent implements OnInit {
   }
 
   update() {
+    if (!this.formGroup.valid)
+      return;
     this.rest.updateEstablecimiento(this.id, this.establecimiento).subscribe(() => {
       this.router.navigateByUrl('/establecimientos');
-      alert ('Establecimiento actualizado!');
-    }, () => {});
+      alert('Establecimiento actualizado!');
+    }, () => { });
   }
 }

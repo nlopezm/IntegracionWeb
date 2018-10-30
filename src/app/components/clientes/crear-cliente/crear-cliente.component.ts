@@ -24,6 +24,8 @@ export class CrearClienteComponent {
   }
 
   crear() {
+    if (!this.formGroup.valid)
+      return;
     this.rest.postCliente(this.formGroup.value).subscribe(
       (res) => {
         this.router.navigateByUrl('/clientes');
