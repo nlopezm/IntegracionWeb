@@ -1,23 +1,15 @@
 <mat-spinner *ngIf="loading"></mat-spinner>
 <form class="container" novalidate [formGroup]="formGroup" (onSubmit)="formGroup.valid && update()" *ngIf="!loading">
-  <ul class="nav">
-    <mat-card class="center">
-      <!-- nombre -->
-      <li>
-        <mat-form-field appearance="outline">
-          <mat-label>Nombre</mat-label>
-          <input formControlName="nombre" type="text" matInput placeholder="Kevin" [(ngModel)]="cliente.nombre">
-        </mat-form-field>
-      </li>
-      <!-- apellido -->
-      <li>
-        <mat-form-field appearance="outline">
-          <mat-label>Apellido</mat-label>
-          <input formControlName="apellido" type="text" matInput placeholder="Cat" [(ngModel)]="cliente.apellido">
-        </mat-form-field>
-      </li>
-    </mat-card>
-  </ul>
+  <mat-card class="center">
+    <mat-form-field appearance="outline">
+      <mat-label>Nombre</mat-label>
+      <input formControlName="nombre" type="text" matInput placeholder="Kevin" [(ngModel)]="cliente.nombre">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Apellido</mat-label>
+      <input formControlName="apellido" type="text" matInput placeholder="Cat" [(ngModel)]="cliente.apellido">
+    </mat-form-field>
+  </mat-card>
   <button mat-fab color="primary" [disabled]="false" (click)="update()">
     <mat-icon>check</mat-icon>
   </button>
