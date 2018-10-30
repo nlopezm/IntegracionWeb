@@ -1,38 +1,55 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { ConfirmDialogComponent } from 'src/app/components/dialogs/confirm-dialog/confirm-dialog.component';
+import { ClienteService } from 'src/app/services/rest/cliente.service';
 @Component({
   selector: 'app-clientes',
   templateUrl: './clientes.component.html',
   styleUrls: ['./clientes.component.scss']
 })
-export class ClientesComponent {
+export class ClientesComponent implements OnInit {
 
   search = '';
-  clientesTotales: any = [
-    { id: 1, nombre: 'Nahuel', apellido: 'López', documento: 4520 },
-    { id: 2, nombre: 'Nacho', apellido: 'Fili' },
-    { id: 3, nombre: 'Ke', apellido: 'Cat' },
-  ];
+  clientesTotales: any;
   clientes: any;
   loading = false;
 
-  constructor(public dialog: MatDialog) {
+  constructor(public dialog: MatDialog, private rest: ClienteService) {
     this.clientes = this.clientesTotales;
   }
 
-  deleteCliente(i: number) {
+  ngOnInit(): void {
+    this.loading = true;
+    this.rest.getClientes().subscribe(
+      (data) => { this.clientes = data; this.clientesTotales = data; this.loading = false; },
+      (err) => this.loading = false,
+    );
+  }
+
+  deleteCliente(id: number) {
     this.dialog.open(ConfirmDialogComponent, {
       data: {
         titulo: 'Eliminar cliente',
         descripcion: 'Estás seguro que querés eliminar a este cliente?',
         buttons: [
           { text: 'Cancelar', function: function () { console.log('Cancelado'); } },
-          { text: 'Aceptar', function: function () { console.log('Borrado'); } }
+          {
+            text: 'Aceptar', function: function () { this.borrar(id); }
+          }
         ]
       }
     });
 
+  }
+
+  borrar(id: number) {
+    this.rest.deleteCliente(id).subscribe(
+      () => {
+        this.clientes = this.clientes.filter((cliente) => cliente.id !== id);
+        this.clientesTotales = this.clientes.filter((cliente) => cliente.id !== id);
+        alert('Cliente borrado');
+      }, (e) => console.log(e)
+    );
   }
 
   searchCliente() {

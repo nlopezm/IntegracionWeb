@@ -10,7 +10,7 @@
         <mat-icon>create</mat-icon>
       </button>
     </a>
-    <button mat-icon-button (click)="deleteCliente(i)">
+    <button mat-icon-button (click)="deleteCliente(cliente.id)">
       <mat-icon>delete</mat-icon>
     </button>
     <a [routerLink]="['/clientes', cliente.id]">
