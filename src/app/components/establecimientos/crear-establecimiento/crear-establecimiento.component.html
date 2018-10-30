@@ -1,24 +1,17 @@
 <form novalidate [formGroup]="formGroup" (onSubmit)="formGroup.valid && create()">
   <mat-card>
-    <p>
-      <mat-form-field appearance="outline">
-        <mat-label>Razón Social</mat-label>
-        <input formControlName="razonSocial" type="text" matInput placeholder="Empresa S.A.">
-      </mat-form-field>
-    </p>
-    <p>
-      <mat-form-field appearance="outline">
-        <mat-label>CUIT</mat-label>
-        <input formControlName="cuit" type="number" matInput placeholder="27432654819">
-      </mat-form-field>
-    </p>
-    <p>
-      <mat-form-field appearance="outline">
-        <mat-label>Dirección</mat-label>
-        <input formControlName="domicilio" type="text" matInput placeholder="Independencia 1515">
-      </mat-form-field>
-    </p>
-
+    <mat-form-field appearance="outline">
+      <mat-label>Razón Social</mat-label>
+      <input formControlName="razonSocial" type="text" matInput placeholder="Empresa S.A.">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>CUIT</mat-label>
+      <input formControlName="cuit" type="number" matInput placeholder="27432654819">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Dirección</mat-label>
+      <input formControlName="domicilio" type="text" matInput placeholder="Independencia 1515">
+    </mat-form-field>
   </mat-card>
   <button mat-fab color="primary" [disabled]="false" (click)="create()">
     <mat-icon>check</mat-icon>
