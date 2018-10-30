@@ -23,18 +23,3 @@
     display: inline-block; // font-size: 20px;
     padding: 20px;
 }
-
-.example-headers-align .mat-expansion-panel-header-title,
-.example-headers-align .mat-expansion-panel-header-description {
-    flex-basis: 0;
-}
-
-.example-headers-align .mat-expansion-panel-header-description {
-    justify-content: space-between;
-    align-items: center;
-}
-
-.orden {
-  text-align: left;
-  width: 25%;
-}
