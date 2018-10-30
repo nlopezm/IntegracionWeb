@@ -25,9 +25,16 @@ import { CrearTarjetaComponent } from 'src/app/components/tarjetas/crear-tarjeta
 import { ModificarTarjetaComponent } from 'src/app/components/tarjetas/modificar-tarjeta/modificar-tarjeta.component';
 import { ModificarEstablecimientosComponent } from 'src/app/components/establecimientos/modificar-establecimientos/modificar-establecimientos.component';
 
-// Services
-import { RestService } from './services/rest/rest.service';
+//Dialogs
+import { ConfirmDialogComponent } from 'src/app/components/dialogs/confirm-dialog/confirm-dialog.component';
 
+// Services
+import { ClienteService } from './services/rest/cliente.service';
+import { EstablecimientoService } from './services/rest/establecimiento.service';
+import { CobranzaService } from './services/rest/cobranza.service';
+import { ConsumoService } from './services/rest/consumo.service';
+import { LiquidacionService } from './services/rest/liquidacion.service';
+import { TarjetaService } from './services/rest/tarjeta.service';
 
 @NgModule({
   declarations: [
@@ -47,6 +54,7 @@ import { RestService } from './services/rest/rest.service';
     CrearTarjetaComponent,
     ModificarTarjetaComponent,
     ModificarEstablecimientosComponent,
+    ConfirmDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -58,8 +66,14 @@ import { RestService } from './services/rest/rest.service';
     ReactiveFormsModule,
   ],
   providers: [
-    RestService,
+    ClienteService,
+    CobranzaService,
+    ConsumoService,
+    EstablecimientoService,
+    LiquidacionService,
+    TarjetaService,
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [ConfirmDialogComponent]
 })
 export class AppModule { }

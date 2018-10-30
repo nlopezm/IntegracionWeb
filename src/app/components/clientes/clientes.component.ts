@@ -1,35 +1,57 @@
-import { Component } from '@angular/core';
-import { using } from 'rxjs';
-
+import { Component, Inject, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material';
+import { ConfirmDialogComponent } from 'src/app/components/dialogs/confirm-dialog/confirm-dialog.component';
+import { ClienteService } from 'src/app/services/rest/cliente.service';
 @Component({
   selector: 'app-clientes',
   templateUrl: './clientes.component.html',
   styleUrls: ['./clientes.component.scss']
 })
-export class ClientesComponent {
+export class ClientesComponent implements OnInit {
 
   search = '';
-  clientesTotales: any = [
-    { id: 1, nombre: 'Nahuel', apellido: 'López', documento: 4520 },
-    { id: 2, nombre: 'Nacho', apellido: 'Fili' },
-    { id: 3, nombre: 'Ke', apellido: 'Cat' },
-  ];
+  clientesTotales: any;
   clientes: any;
   loading = false;
 
-  constructor() {
+  constructor(public dialog: MatDialog, private rest: ClienteService) {
     this.clientes = this.clientesTotales;
   }
 
-  deleteCliente(i: number) {
+  ngOnInit(): void {
+    this.loading = true;
+    this.rest.getClientes().subscribe(
+      (data) => { this.clientes = data; this.clientesTotales = data; this.loading = false; },
+      (err) => this.loading = false,
+    );
+  }
 
+  deleteCliente(id: number) {
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      data: {
+        titulo: 'Eliminar cliente',
+        descripcion: 'Estás seguro que querés eliminar a este cliente?'
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.rest.deleteCliente(id).subscribe(
+          () => {
+            this.clientes = this.clientes.filter((cliente) => cliente.id !== id);
+            this.clientesTotales = this.clientes.filter((cliente) => cliente.id !== id);
+            alert('Cliente borrado');
+          }, (e) => console.log(e)
+        );
+      }
+    });
   }
 
   searchCliente() {
     this.clientes = this.clientesTotales.filter((cliente) => {
       const nombre = (cliente.nombre + ' ' + cliente.apellido).toLowerCase();
       return (nombre.indexOf(this.search.toLowerCase()) > -1)
-        || (cliente.documento && cliente.documento.toString().indexOf(this.search.toLowerCase()) > -1);
+        || (cliente.nroDocumento && cliente.nroDocumento.toString().indexOf(this.search.toLowerCase()) > -1);
     });
   }
 
