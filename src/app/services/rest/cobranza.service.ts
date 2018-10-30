@@ -15,7 +15,7 @@ export class CobranzaService {
 
   getCobranzas(): Observable<{}> {
     return this.http.get(this.url).pipe(
-      map(res => res._embedded.cobranzas),
+      map(res => res['_embedded'].cobranzas),
       catchError(err => of(err)));
   }
 

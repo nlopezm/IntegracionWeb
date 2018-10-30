@@ -15,7 +15,7 @@ export class ClienteService {
 
   getClientes(): Observable<{}> {
     return this.http.get(this.url).pipe(
-      map(res => res._embedded.clientes),
+      map(res => res['_embedded'].clientes),
       catchError(err => of(err)));
   }
 

@@ -15,7 +15,7 @@ export class LiquidacionService {
 
   getLiquidacions(): Observable<{}> {
     return this.http.get(this.url).pipe(
-      map(res => res._embedded.liquidaciones),
+      map(res => res['_embedded'].liquidaciones),
       catchError(err => of(err)));
   }
 

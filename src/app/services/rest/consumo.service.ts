@@ -15,7 +15,7 @@ export class ConsumoService {
 
   getConsumos(): Observable<{}> {
     return this.http.get(this.url).pipe(
-      map(res => res._embedded.consumos),
+      map(res => res['_embedded'].consumos),
       catchError(err => of(err)));
   }
 
