@@ -1,4 +1,4 @@
-<form class="container" novalidate [formGroup]="formGroup" (onSubmit)="formGroup.valid">
+<form class="container" novalidate>
 
   <ul class="nav">
     <mat-card class="center">
@@ -6,14 +6,14 @@
       <li>
         <mat-form-field appearance="outline" class="tamanoLimite">
           <mat-label>Número de tarjeta</mat-label>
-          <input formControlName="numero" type="number" matInput placeholder="1111222233334444">
+          <input name="numero" disabled matInput [(ngModel)]="hola">
         </mat-form-field>
       </li>
       <!-- cod seg -->
       <li>
         <mat-form-field appearance="outline" class="tamanoLimite">
           <mat-label>Código de seguridad</mat-label>
-          <input formControlName="cod_seguridad" type="number" matInput placeholder="123">
+          <input name="codigo" disabled matInput [(ngModel)]="hola">
         </mat-form-field>
       </li>
       <br>
@@ -21,7 +21,7 @@
       <li>
         <mat-form-field appearance="outline" class="tamanoLimite">
           <mat-label>Válido desde</mat-label>
-          <input formControlName="valido_desde" type="number" matInput [matDatepicker]="picker1">
+          <input name="valido_desde" disabled matInput [matDatepicker]="picker1" [(ngModel)]="hola">
           <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
           <mat-datepicker #picker1></mat-datepicker>
         </mat-form-field>
@@ -29,7 +29,7 @@
       <li>
         <mat-form-field appearance="outline" class="tamanoLimite">
           <mat-label>Válido hasta</mat-label>
-          <input formControlName="valido_hasta" type="number" matInput [matDatepicker]="picker2">
+          <input name="valido_hasta" disabled matInput [matDatepicker]="picker2" [(ngModel)]="hola">
           <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
           <mat-datepicker #picker2 color="primary"></mat-datepicker>
         </mat-form-field>
@@ -39,46 +39,29 @@
       <li>
         <mat-form-field appearance="outline" class="tamanoLimite">
           <mat-label>Día de cierre</mat-label>
-          <input formControlName="fecha_cierre" type="number" matInput placeholder="16">
+          <input name="dia_cierre" disabled matInput [(ngModel)]="hola">
         </mat-form-field>
       </li>
       <!-- categoria -->
       <li>
         <mat-form-field appearance="outline" class="tamanoLimite">
           <mat-label>Categoría</mat-label>
-          <input formControlName="categoria" type="text" matInput placeholder="Categoría">
+          <input name="categoria" disabled matInput [(ngModel)]="hola">
         </mat-form-field>
       </li>
       <!-- monto lim -->
       <li>
         <mat-form-field appearance="outline" class="tamanoLimite">
           <mat-label>Monto límite</mat-label>
-          <input formControlName="monto_limite" type="number" matInput placeholder="50000">
+          <input name="monto_limite" disabled matInput [(ngModel)]="hola">
         </mat-form-field>
       </li>
       <!-- cliente -->
       <br>
       <li>
-        <mat-form-field appearance="outline" class="tamanoLimite">
-          <mat-label>Tipo de documento</mat-label>
-          <mat-select [(value)]="selected" formControlName="tipo" type="text">
-            <mat-option value="DNI">DNI</mat-option>
-            <mat-option value="CI">CI</mat-option>
-            <mat-option value="LE">LE</mat-option>
-            <mat-option value="LC">LC</mat-option>
-          </mat-select>
-        </mat-form-field>
-      </li>
-      <li>
-        <mat-form-field appearance="outline" *ngIf="selected">
-          <mat-label>Numero de {{selected}}</mat-label>
-          <input formControlName="documento" type="number" matInput placeholder="38200600">
-        </mat-form-field>
-      </li>
-      <li>
-        <mat-form-field appearance="outline" *ngIf="selected">
-          <mat-label>JORGE</mat-label>
-          <input formControlName="nombre" type="number" matInput placeholder="JORGE">
+        <mat-form-field appearance="outline">
+          <mat-label>Cliente</mat-label>
+          <input name="cliente" disabled type="number" matInput [(ngModel)]="hola">
         </mat-form-field>
       </li>
 
@@ -86,7 +69,7 @@
   </ul>
 
   <button mat-fab color="primary" [disabled]="false" style="position:right">
-    <mat-icon>check</mat-icon>
+    <mat-icon>back</mat-icon>
   </button>
 
 </form>
