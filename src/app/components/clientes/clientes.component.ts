@@ -56,7 +56,7 @@ export class ClientesComponent implements OnInit {
     this.clientes = this.clientesTotales.filter((cliente) => {
       const nombre = (cliente.nombre + ' ' + cliente.apellido).toLowerCase();
       return (nombre.indexOf(this.search.toLowerCase()) > -1)
-        || (cliente.documento && cliente.documento.toString().indexOf(this.search.toLowerCase()) > -1);
+        || (cliente.nroDocumento && cliente.nroDocumento.toString().indexOf(this.search.toLowerCase()) > -1);
     });
   }
 
