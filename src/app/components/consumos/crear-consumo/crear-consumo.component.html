@@ -26,7 +26,7 @@
       <input formControlName="tarjetaId" type="text" placeholder="Tarjeta" matInput [matAutocomplete]="auto2" (keyup)="filterTarjetas(searchTarjetas)"
         [(ngModel)]="searchTarjetas">
       <mat-autocomplete #auto2="matAutocomplete">
-        <mat-option *ngFor="let tarjeta of tarjetasFiltered" [value]="tarjeta.nroTarjeta">
+        <mat-option *ngFor="let tarjeta of tarjetasFiltered" [value]="tarjeta.id">
           {{tarjeta.nroTarjeta}}
         </mat-option>
       </mat-autocomplete>

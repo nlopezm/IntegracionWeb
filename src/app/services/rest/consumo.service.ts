@@ -10,7 +10,7 @@ import { of } from 'rxjs';
   providedIn: 'root'
 })
 export class ConsumoService {
-  url = environment.baseApiUrl + 'Consumos';
+  url = environment.baseApiUrl + 'consumos';
   constructor(public http: HttpClient) { }
 
   getConsumos(): Observable<{}> {
@@ -31,8 +31,8 @@ export class ConsumoService {
     return this.http.put(this.url + '/' + id, Consumos);
   }
 
-  postConsumo(Consumos: any): Observable<{}> {
-    return this.http.post(this.url, Consumos);
+  postConsumo(consumo: any): Observable<{}> {
+    return this.http.post(environment.baseApiUrl + '/tarjetas/' + consumo.tarjetaId + '/consumosEnteros', consumo);
   }
 
 }
