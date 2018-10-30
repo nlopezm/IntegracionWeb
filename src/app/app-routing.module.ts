@@ -31,7 +31,7 @@ const routes: Routes = [
   { path: 'establecimientos/:establecimientoId', component: ModificarEstablecimientosComponent, pathMatch: 'full', data: { title: 'Modificar establecimiento' } },
   { path: 'tarjetas', component: TarjetasComponent, pathMatch: 'full', data: { title: 'Tarjetas' } },
   { path: 'tarjetas/crear', component: CrearTarjetaComponent, pathMatch: 'full', data: { title: 'Crear tarjeta' } },
-  { path: 'tarjetas/:tarjetaId', component: ModificarTarjetaComponent, pathMatch: 'full', data: { title: 'Modificar tarjeta' } },
+  { path: 'tarjetas/:tarjetaId', component: ModificarTarjetaComponent, pathMatch: 'full', data: { title: 'Ver tarjeta' } },
   { path: 'liquidaciones', component: LiquidacionesComponent, pathMatch: 'full', data: { title: 'Liquidaciones' } },
   { path: '**', redirectTo: 'home', pathMatch: 'full' },
 ];
