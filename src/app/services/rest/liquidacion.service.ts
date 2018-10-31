@@ -13,7 +13,7 @@ export class LiquidacionService {
   url = environment.baseApiUrl + 'liquidaciones';
   constructor(public http: HttpClient) { }
 
-  getLiquidacions(): Observable<{}> {
+  getLiquidaciones(): Observable<{}> {
     return this.http.get(this.url).pipe(
       map(res => res['_embedded'].liquidaciones),
       catchError(err => of(err)));

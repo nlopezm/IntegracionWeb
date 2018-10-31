@@ -22,7 +22,6 @@ export class ConsumosComponent implements OnInit {
     this.consumoService.getConsumos().subscribe(
       (data) => {
         this.consumos = data;
-        this.consumoService = data;
         this.loading = false;
       }, () => this.loading = false
     );
