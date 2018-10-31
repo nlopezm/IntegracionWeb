@@ -61,7 +61,7 @@ export class CrearConsumoComponent implements OnInit {
     const cliente = this.clientes.filter((cliente) => cliente.id === clienteId)[0];
     this.restService.get(cliente._links.tarjetas.href).subscribe(
       (data) => {
-        this.tarjetas = data.tarjetas || [];
+        this.tarjetas = data['tarjetas'] || [];
         this.tarjetasFiltered = this.tarjetas;
       },
       () => { }
