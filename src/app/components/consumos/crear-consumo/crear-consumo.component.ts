@@ -27,7 +27,7 @@ export class CrearConsumoComponent implements OnInit {
     private consumoService: ConsumoService, private router: Router, private restService: RestService) {
 
     this.formGroup = this.fb.group({
-      montoTotal: ['', [Validators.required]],
+      monto: ['', [Validators.required]],
       clienteId: ['', [Validators.required]],
       cantCuotas: ['', [Validators.required]],
       interes: ['', []],
@@ -83,12 +83,11 @@ export class CrearConsumoComponent implements OnInit {
 
   changeCouta() {
     this.formGroup.patchValue({
-      montoTotal: (this.formGroup.value.cantCuotas * this.formGroup.value.montoCuota) * (100 + this.formGroup.value.interes) / 100,
+      monto: (this.formGroup.value.cantCuotas * this.formGroup.value.montoCuota) * (100 + this.formGroup.value.interes) / 100,
     });
   }
 
   changeCantCuotas() {
-    console.log("asf");
     if (this.formGroup.value.cantCuotas > 1) {
       this.formGroup.get('montoCuota').setValidators([Validators.required]);
       this.formGroup.get('interes').setValidators([Validators.required]);
@@ -102,7 +101,6 @@ export class CrearConsumoComponent implements OnInit {
   }
 
   create() {
-    console.log(this.formGroup);
     if (!this.formGroup.valid)
       return;
 

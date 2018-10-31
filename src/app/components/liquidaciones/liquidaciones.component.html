@@ -77,22 +77,26 @@
         </p>
       </li>
     </ul>
-
   </form>
-
   <!-- Muestra de liquidaciones -->
-  <mat-card>
-
-    <mat-accordion *ngFor="let liquidacion of liquidaciones">
+  <mat-card *ngIf="liquidaciones.length">
+    <mat-card-title>Liquidaciones</mat-card-title>
+    <mat-accordion *ngFor="let liquidacion of liquidacionesFiltered">
       <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
         <mat-expansion-panel-header>
           <mat-panel-title>
-            <a matLine>Fecha de cierre de liquidacion: <b>{{liquidacion.fechaCierre}}</b></a>
+            <a matLine>
+              <b>Cierre:</b>
+              {{liquidacion.fechaCierre | date:'dd-MM-yyyy'}}
+            </a>
           </mat-panel-title>
           <mat-panel-description>
-            <a>Fecha de vencimiento: {{liquidacion.fechaVencimiento}}</a>
-            <a *ngIf="liquidacion.estado" style="margin-left: 50%">Estado: <b> Pagada</b> </a>
-            <a *ngIf="!liquidacion.estado" style="margin-left: 50%">Estado: <b> Pendiente </b></a>
+            <a style="width: -webkit-fill-available">
+              <b>Vencimiento:</b> {{liquidacion.fechaVencimiento | date:'dd-MM-yyyy'}}</a>
+            <a>
+              <b>Estado:</b>
+              {{liquidacion.pagada? 'Pagada':'Pendiente'}}
+            </a>
           </mat-panel-description>
         </mat-expansion-panel-header>
         <table style="text-align:justify;width: 100%">
@@ -102,18 +106,18 @@
             <th>Descripcion</th>
             <th>Monto Total</th>
           </tr>
-          <tr *ngFor="let consumo of consumos">
-            <td>{{consumo.fecha}}</td>
+          <tr *ngFor="let consumo of liquidacion.consumos">
+            <td>{{consumo.fecha | date:'dd-MM-yyyy'}}</td>
             <td>{{consumo.establecimiento}}</td>
             <td>{{consumo.descripcion}}</td>
-            <td>{{consumo.montototal}}</td>
+            <td>{{consumo.monto}}</td>
           </tr>
-          
-        </table><br>
-        <button *ngIf="!liquidacion.estado" mat-stroked-button color="primary" style="width:15%;
+        </table>
+        <br>
+        <button *ngIf="!liquidacion.pagada" mat-stroked-button color="primary" style="width:15%;
           text-align:center;margin-left: 40%">
-            Pagar
-          </button>
+          Pagar
+        </button>
       </mat-expansion-panel>
     </mat-accordion>
     <div *ngIf="!loading && !liquidaciones.length">
@@ -123,9 +127,5 @@
         </div>
       </div>
     </div>
-
-
-
-
   </mat-card>
 </mat-nav-list>
