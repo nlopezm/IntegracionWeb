@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ClienteService } from '../../services/rest/cliente.service';
-import { RestService } from '../../services/rest/rest.service';
+import { LiquidacionService } from '../../services/rest/liquidacion.service';
+import { ClienteService } from 'src/app/services/rest/cliente.service';
+import { RestService } from 'src/app/services/rest/rest.service';
 
 @Component({
   selector: 'app-cobranzas',
@@ -9,6 +10,10 @@ import { RestService } from '../../services/rest/rest.service';
   styleUrls: ['./cobranzas.component.scss']
 })
 export class CobranzasComponent implements OnInit {
+  search = '';
+  // liquidaciones
+  liquidaciones: any = [];
+  liquidacionesFiltered: any = [];
 
   clientes: any = [];
   clientesFiltered: any = [];
@@ -20,9 +25,10 @@ export class CobranzasComponent implements OnInit {
 
   panelOpenState = false;
   loading = false;
-  fechaFormGroup: FormGroup;
+  formGroup: FormGroup;
 
-  constructor(private fb: FormBuilder, private _formBuilder: FormBuilder,
+  constructor(private fb: FormBuilder, private liquidacionService: LiquidacionService,
+    private _formBuilder: FormBuilder,
     private clientesService: ClienteService, private restService: RestService) {
     this.clienteFormGroup = this._formBuilder.group({
       idCliente: ['', [Validators.required]]
@@ -39,6 +45,13 @@ export class CobranzasComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.liquidacionService.getLiquidaciones().subscribe(
+      (data) => {
+        this.liquidaciones = data;
+        this.liquidacionesFiltered = data;
+      },
+      () => { }
+    );
     this.clientesService.getClientes().subscribe(
       (data) => {
         this.clientes = data;
@@ -46,12 +59,17 @@ export class CobranzasComponent implements OnInit {
       }, () => { }
     );
   }
+
   filterClientes(search) {
     this.clientesFiltered = this.clientes.filter((cliente) => {
       const nombre = (cliente.nombre + ' ' + cliente.apellido).toLowerCase();
       return (nombre.indexOf(search.toLowerCase()) > -1)
         || (cliente.documento && cliente.documento.toString().indexOf(search.toLowerCase()) > -1);
     });
+  }
+
+  filterTarjetas(search) {
+    this.tarjetasFiltered = this.tarjetas.filter((tarjeta) => tarjeta.nroTarjeta === search);
   }
 
   onClienteSelected(event) {
@@ -66,9 +84,16 @@ export class CobranzasComponent implements OnInit {
     );
   }
 
-  buscarLiquidaciones() {
-
+  onTarjetaSelected(event) {
+    const tarjetaId = event.option.value;
+    this.liquidacionService.getByTarjeta(tarjetaId).subscribe(
+      (data) => {
+        console.log(data);
+        this.liquidaciones = data;
+        this.liquidacionesFiltered = data;
+      },
+      () => { }
+    );
   }
-
 
 }

@@ -1,65 +1,115 @@
 <mat-vertical-stepper labelPosition="bottom" #stepper>
-  <mat-step [stepControl]="clienteFormGroup">
-    <form [formGroup]="clienteFormGroup">
-      <ng-template matStepLabel>Seleccione el cliente</ng-template>
-      <mat-form-field>
-        <input formControlName="idCliente" type="text" placeholder="Cliente" matInput [matAutocomplete]="auto1" (keyup)="filterClientes(searchCliente)"
-          [(ngModel)]="searchCliente">
-        <mat-autocomplete #auto1="matAutocomplete" (optionSelected)="onClienteSelected($event)">
-          <mat-option *ngFor="let cliente of clientesFiltered" [value]="cliente.id">
-            {{cliente.nombre}} {{cliente.apellido}}
-          </mat-option>
-        </mat-autocomplete>
-      </mat-form-field>
-      <div>
-        <button mat-button matStepperNext>Siguiente</button>
-      </div>
-    </form>
-  </mat-step>
-  <mat-step [stepControl]="tarjetaFormGroup">
-    <form [formGroup]="tarjetaFormGroup">
-      <ng-template matStepLabel>Seleccione la tarjeta</ng-template>
-      <mat-form-field>
-        <input formControlName="idTarjeta" type="text" placeholder="Tarjeta" matInput [matAutocomplete]="auto2" (keyup)="filterTarjetas(searchTarjeta)"
-          [(ngModel)]="searchTarjeta">
-        <mat-autocomplete #auto2="matAutocomplete">
-          <mat-option *ngFor="let tarjeta of tarjetasFiltered" [value]="tarjeta.id">
-            {{tarjeta.nroTarjeta}}
-          </mat-option>
-        </mat-autocomplete>
-      </mat-form-field>
-      <div>
-        <button mat-button matStepperNext>Siguiente</button>
-      </div>
-    </form>
-  </mat-step>
+    <mat-step [stepControl]="clienteFormGroup">
+      <form [formGroup]="clienteFormGroup">
+        <ng-template matStepLabel>Seleccione el cliente</ng-template>
+        <mat-form-field>
+          <input formControlName="idCliente" type="text" placeholder="Cliente" matInput [matAutocomplete]="auto1" (keyup)="filterClientes(searchCliente)"
+            [(ngModel)]="searchCliente">
+          <mat-autocomplete #auto1="matAutocomplete" (optionSelected)="onClienteSelected($event)">
+            <mat-option *ngFor="let cliente of clientesFiltered" [value]="cliente.id">
+              {{cliente.nombre}} {{cliente.apellido}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperNext>Siguiente</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="tarjetaFormGroup">
+      <form [formGroup]="tarjetaFormGroup">
+        <ng-template matStepLabel>Seleccione la tarjeta</ng-template>
+        <mat-form-field>
+          <input formControlName="idTarjeta" type="text" placeholder="Tarjeta" matInput [matAutocomplete]="auto2" (keyup)="filterTarjetas(searchTarjeta)"
+            [(ngModel)]="searchTarjeta">
+          <mat-autocomplete #auto2="matAutocomplete" (optionSelected)="onTarjetaSelected($event)">
+            <mat-option *ngFor="let tarjeta of tarjetasFiltered" [value]="tarjeta.id">
+              {{tarjeta.nroTarjeta}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperNext>Siguiente</button>
+        </div>
+      </form>
+    </mat-step>
 
-  <mat-step [stepControl]="fechaFormGroup" optional>
-    <form [formGroup]="fechaFormGroup">
-      <ng-template matStepLabel>Filtro por fecha (Opcional)</ng-template>
-      <mat-form-field appearance="outline">
-        <mat-label>Mes cierre</mat-label>
-        <mat-select [(value)]="mesCierre" formControlName="mesCierre" type="number">
-          <mat-option (keyup)='filtroMesCierre()' *ngFor="let mesCierre of [1,2,3,4,5,6,7,8,9,10,11,12]" value="{{mesCierre}}">{{mesCierre}}</mat-option>
-        </mat-select>
-      </mat-form-field>
+    <!-- <mat-step [stepControl]="fechaFormGroup" optional>
+      <form [formGroup]="fechaFormGroup">
+        <ng-template matStepLabel>Filtro por fecha (Opcional)</ng-template>
+        <mat-form-field appearance="outline">
+          <mat-label>Mes cierre</mat-label>
+          <mat-select [(value)]="mesCierre" formControlName="mesCierre" type="number">
+            <mat-option (keyup)='filtroMesCierre()' *ngFor="let mesCierre of [1,2,3,4,5,6,7,8,9,10,11,12]" value="{{mesCierre}}">{{mesCierre}}</mat-option>
+          </mat-select>
+        </mat-form-field>
 
-      <mat-form-field appearance="outline" *ngIf="mesCierre">
-        <mat-label>Año cierre</mat-label>
-        <input formControlName="anioCierre" type="number" matInput placeholder="1990">
-      </mat-form-field>
+        <mat-form-field appearance="outline" *ngIf="mesCierre">
+          <mat-label>Año cierre</mat-label>
+          <input formControlName="anioCierre" type="number" matInput placeholder="1990">
+        </mat-form-field>
 
+        <div>
+          <button mat-button matStepperPrevious>Previo</button>
+          <button mat-button matStepperNext>Siguiente</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Listo</ng-template>
       <div>
         <button mat-button matStepperPrevious>Previo</button>
-        <button mat-button matStepperNext>Siguiente</button>
+        <button mat-button (click)="stepper.reset()">Borrar filtros</button>
       </div>
-    </form>
-  </mat-step>
-  <mat-step>
-    <ng-template matStepLabel>Listo</ng-template>
-    <div>
-      <button mat-button matStepperPrevious>Previo</button>
-      <button mat-button (click)="stepper.reset()">Borrar filtros</button>
+    </mat-step> -->
+  </mat-vertical-stepper>
+  <!-- Muestra de liquidaciones -->
+  <mat-card *ngIf="liquidaciones.length">
+    <mat-card-title>Cobranzas</mat-card-title>
+    <mat-accordion *ngFor="let liquidacion of liquidacionesFiltered">
+      <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <a matLine>
+              <b>Cierre:</b>
+              {{liquidacion.fechaCierre | date:'dd-MM-yyyy'}}
+            </a>
+          </mat-panel-title>
+          <mat-panel-description>
+            <a style="width: -webkit-fill-available">
+              <b>Vencimiento:</b> {{liquidacion.fechaVencimiento | date:'dd-MM-yyyy'}}</a>
+            <a>
+              <b>Estado:</b>
+              {{liquidacion.pagada? 'Pagada':'Pendiente'}}
+            </a>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <table style="text-align:justify;width: 100%">
+          <tr>
+            <th>Fecha</th>
+            <th>Establecimiento</th>
+            <th>Descripcion</th>
+            <th>Monto Total</th>
+          </tr>
+          <tr *ngFor="let consumo of liquidacion.consumos">
+            <td>{{consumo.fecha | date:'dd-MM-yyyy'}}</td>
+            <td>{{consumo.establecimiento && consumo.establecimiento.razonSocial ? consumo.establecimiento.razonSocial: ''}}</td>
+            <td>{{consumo.descripcion}}</td>
+            <td>{{consumo.monto}}</td>
+          </tr>
+        </table>
+        <br>
+        <button *ngIf="!liquidacion.pagada" mat-stroked-button color="primary" style="width:15%;
+            text-align:center;margin-left: 40%">
+          Pagar
+        </button>
+      </mat-expansion-panel>
+    </mat-accordion>
+    <div *ngIf="!loading && !liquidaciones.length">
+      <div>
+        <div style="text-align: center">
+          <p>No hay liquidaciones creadas. </p>
+        </div>
+      </div>
     </div>
-  </mat-step>
-</mat-vertical-stepper>
+  </mat-card>
