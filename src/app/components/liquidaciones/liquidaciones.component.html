@@ -85,14 +85,17 @@
       <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
         <mat-expansion-panel-header>
           <mat-panel-title>
-            <a matLine>Cierre:
-              <b>{{liquidacion.fechaCierre | date:'dd-MM-yyyy'}}</b>
+            <a matLine>
+              <b>Cierre:</b>
+              {{liquidacion.fechaCierre | date:'dd-MM-yyyy'}}
             </a>
           </mat-panel-title>
           <mat-panel-description>
-            <a>Vencimiento: {{liquidacion.fechaVencimiento | date:'dd-MM-yyyy'}}</a>
-            <a style="margin-left: 50%">Estado:
-              <b> {{liquidacion.pagada? 'Pagada':'Pendiente'}}</b>
+            <a style="width: -webkit-fill-available">
+              <b>Vencimiento:</b> {{liquidacion.fechaVencimiento | date:'dd-MM-yyyy'}}</a>
+            <a>
+              <b>Estado:</b>
+              {{liquidacion.pagada? 'Pagada':'Pendiente'}}
             </a>
           </mat-panel-description>
         </mat-expansion-panel-header>
