@@ -1,51 +1,51 @@
-<form class="container" novalidate>
+<mat-spinner *ngIf="loading"></mat-spinner>
+<form class="container" novalidate *ngIf="!loading">
   <mat-card class="center">
     <!-- num tarjeta -->
     <mat-form-field appearance="outline" style="width: 68%">
       <mat-label>Número de tarjeta</mat-label>
-      <input name="numero" disabled matInput [(ngModel)]="hola">
+      <input name="numero" disabled matInput [(ngModel)]="tarjeta.nroTarjeta">
     </mat-form-field>
 
     <mat-form-field appearance="outline" style="width: 28%">
       <mat-label>Código de seguridad</mat-label>
-      <input name="codigo" disabled matInput [(ngModel)]="hola">
+      <input name="codigo" disabled matInput [(ngModel)]="tarjeta.codigoSeguridad">
     </mat-form-field>
 
     <mat-form-field appearance="outline" style="width: 48%">
       <mat-label>Válido desde</mat-label>
-      <input name="valido_desde" disabled matInput [matDatepicker]="picker1" [(ngModel)]="hola">
+      <input name="valido_desde" disabled matInput [matDatepicker]="picker1" [(ngModel)]="tarjeta.fechaValidaDesde">
       <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
       <mat-datepicker #picker1></mat-datepicker>
     </mat-form-field>
 
     <mat-form-field appearance="outline" style="width: 48%">
       <mat-label>Válido hasta</mat-label>
-      <input name="valido_hasta" disabled matInput [matDatepicker]="picker2" [(ngModel)]="hola">
+      <input name="valido_hasta" disabled matInput [matDatepicker]="picker2" [(ngModel)]="tarjeta.fechaValidaHasta">
       <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
       <mat-datepicker #picker2 color="primary"></mat-datepicker>
     </mat-form-field>
 
     <mat-form-field appearance="outline" style="width: 48%">
       <mat-label>Día de cierre</mat-label>
-      <input name="dia_cierre" disabled matInput [(ngModel)]="hola">
+      <input name="dia_cierre" disabled matInput [(ngModel)]="tarjeta.diaCierre">
     </mat-form-field>
 
     <mat-form-field appearance="outline" style="width: 48%">
       <mat-label>Categoría</mat-label>
-      <input name="categoria" disabled matInput [(ngModel)]="hola">
+      <input name="categoria" disabled matInput [(ngModel)]="tarjeta.categoria">
     </mat-form-field>
 
     <mat-form-field appearance="outline" style="width: 48%">
       <mat-label>Monto límite</mat-label>
-      <input name="monto_limite" disabled matInput [(ngModel)]="hola">
+      <input name="monto_limite" disabled matInput [(ngModel)]="tarjeta.montoLimite">
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>Cliente</mat-label>
-      <input name="cliente" disabled type="number" matInput [(ngModel)]="hola">
+      <input name="cliente" disabled type="number" matInput [(ngModel)]="cliente">
     </mat-form-field>
   </mat-card>
-  <button mat-fab color="primary" [disabled]="false" style="position:right">
-    <mat-icon>arrow_back</mat-icon>
-  </button>
-
 </form>
+<button mat-fab color="primary" [disabled]="false" style="position:right" (click)="goBack()">
+  <mat-icon>arrow_back</mat-icon>
+</button>
