@@ -1,3 +1,68 @@
+<mat-vertical-stepper labelPosition="bottom" #stepper>
+  <mat-step [stepControl]="clienteFormGroup">
+    <form [formGroup]="clienteFormGroup">
+      <ng-template matStepLabel>Seleccione el cliente</ng-template>
+      <mat-form-field>
+        <input formControlName="idCliente" type="text" placeholder="Cliente" matInput [matAutocomplete]="auto1" (keyup)="filterClientes(searchCliente)"
+          [(ngModel)]="searchCliente">
+        <mat-autocomplete #auto1="matAutocomplete" (optionSelected)="onClienteSelected($event)">
+          <mat-option *ngFor="let cliente of clientesFiltered" [value]="cliente.id">
+            {{cliente.nombre}} {{cliente.apellido}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperNext>Siguiente</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="tarjetaFormGroup">
+    <form [formGroup]="tarjetaFormGroup">
+      <ng-template matStepLabel>Seleccione la tarjeta</ng-template>
+      <mat-form-field>
+        <input formControlName="idTarjeta" type="text" placeholder="Tarjeta" matInput [matAutocomplete]="auto2" (keyup)="filterTarjetas(searchTarjeta)"
+          [(ngModel)]="searchTarjeta">
+        <mat-autocomplete #auto2="matAutocomplete" (optionSelected)="onTarjetaSelected($event)">
+          <mat-option *ngFor="let tarjeta of tarjetasFiltered" [value]="tarjeta.id">
+            {{tarjeta.nroTarjeta}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperNext>Siguiente</button>
+      </div>
+    </form>
+  </mat-step>
+
+  <mat-step [stepControl]="fechaFormGroup" optional>
+    <form [formGroup]="fechaFormGroup">
+      <ng-template matStepLabel>Filtro por fecha (Opcional)</ng-template>
+      <mat-form-field appearance="outline">
+        <mat-label>Mes cierre</mat-label>
+        <mat-select [(value)]="mesCierre" formControlName="mesCierre" type="number">
+          <mat-option (keyup)='filtroMesCierre()' *ngFor="let mesCierre of [1,2,3,4,5,6,7,8,9,10,11,12]" value="{{mesCierre}}">{{mesCierre}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" *ngIf="mesCierre">
+        <mat-label>Año cierre</mat-label>
+        <input formControlName="anioCierre" type="number" matInput placeholder="1990">
+      </mat-form-field>
+
+      <div>
+        <button mat-button matStepperPrevious>Previo</button>
+        <button mat-button matStepperNext>Siguiente</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Listo</ng-template>
+    <div>
+      <button mat-button matStepperPrevious>Previo</button>
+      <button mat-button (click)="stepper.reset()">Borrar filtros</button>
+    </div>
+  </mat-step>
+</mat-vertical-stepper>
 <!-- Muestra de liquidaciones -->
 <mat-card *ngIf="liquidaciones.length">
   <mat-card-title>Liquidaciones</mat-card-title>

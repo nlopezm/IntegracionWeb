@@ -35,4 +35,8 @@ export class LiquidacionService {
     return this.http.post(this.url, liquidaciones);
   }
 
+  getByTarjeta(idTarjeta: number): Observable<{}> {
+    return this.http.get(environment.baseApiUrl + '/tarjetas/' + idTarjeta + '/liquidaciones');
+  }
+
 }
