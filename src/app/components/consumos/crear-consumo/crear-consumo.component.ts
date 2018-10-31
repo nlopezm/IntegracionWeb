@@ -88,7 +88,6 @@ export class CrearConsumoComponent implements OnInit {
   }
 
   changeCantCuotas() {
-    console.log("asf");
     if (this.formGroup.value.cantCuotas > 1) {
       this.formGroup.get('montoCuota').setValidators([Validators.required]);
       this.formGroup.get('interes').setValidators([Validators.required]);
