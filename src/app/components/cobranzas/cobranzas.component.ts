@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-cobranzas',
@@ -34,7 +34,9 @@ export class CobranzasComponent {
   consumos: any;
   panelOpenState = false;
   loading = false;
-  formGroup: FormGroup;
+  tercerFormGroup: FormGroup;
+  firstFormGroup: FormGroup;
+  secondFormGroup: FormGroup;
 
   step = 0;
 
@@ -50,16 +52,22 @@ export class CobranzasComponent {
     this.step--;
   }
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private _formBuilder: FormBuilder) {
     this.liquidaciones = this.liquidacionesTotales;
     this.tarjetas = this.tarjetasCred;
     this.consumos = this.consumosTotales;
-    this.formGroup = this.fb.group({
+    this.firstFormGroup = this._formBuilder.group({
       numeroDocumento: ['', [Validators.required]],
-      anioCierre: ['', [Validators.required, Validators.min(1980), Validators.max(2019)]],
-      anioVencimiento: ['', [Validators.required, Validators.min(1980), Validators.max(2019)]],
-      tarjeta: ['', [Validators.required]],
+      tarjeta: ['', [Validators.required]]
+    });
+    this.secondFormGroup = this._formBuilder.group({
+      anioCierre: ['', [Validators.required, Validators.min(1980), Validators.max(2019)]]
+
+    });
+    this.tercerFormGroup = this._formBuilder.group({
+      anioVencimiento: ['', [Validators.required, Validators.min(1980), Validators.max(2019)]]
     });
   }
+
 
 }

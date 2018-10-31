@@ -11,6 +11,7 @@ import {
   MatCheckboxModule,
   MatListModule,
   MatFormFieldModule,
+  MatStepperModule,
   MatInputModule,
   MatGridListModule,
   MatPaginatorModule,
@@ -30,6 +31,7 @@ import {
   imports: [
     MatButtonModule,
     MatExpansionModule,
+    MatStepperModule,
     MatMenuModule,
     MatDatepickerModule,
     MatNativeDateModule,
@@ -56,6 +58,7 @@ import {
   ],
   exports: [
     MatButtonModule,
+    MatStepperModule,
     MatMenuModule,
     MatToolbarModule,
     MatExpansionModule,
