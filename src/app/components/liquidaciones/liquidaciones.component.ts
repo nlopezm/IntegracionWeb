@@ -47,7 +47,6 @@ export class LiquidacionesComponent implements OnInit {
   ngOnInit() {
     this.liquidacionService.getLiquidaciones().subscribe(
       (data) => {
-        console.log(data);
         this.liquidaciones = data;
         this.liquidacionesFiltered = data;
       },
@@ -67,6 +66,10 @@ export class LiquidacionesComponent implements OnInit {
       return (nombre.indexOf(search.toLowerCase()) > -1)
         || (cliente.documento && cliente.documento.toString().indexOf(search.toLowerCase()) > -1);
     });
+  }
+
+  filterTarjetas(search) {
+    this.tarjetasFiltered = this.tarjetas.filter((tarjeta) => tarjeta.nroTarjeta === search);
   }
 
   onClienteSelected(event) {
