@@ -11,13 +11,13 @@
       <input formControlName="codigoSeguridad" type="number" matInput placeholder="Cód. seguridad">
     </mat-form-field>
     <br>
-    <mat-form-field style="width: 48%">
+    <mat-form-field appearance="outline" style="width: 48%">
       <input formControlName="fechaValidaDesde" type="text" matInput [matDatepicker]="picker" placeholder="Válida desde">
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker startView="year"></mat-datepicker>
     </mat-form-field>
 
-    <mat-form-field style="width: 48%">
+    <mat-form-field appearance="outline" style="width: 48%">
       <input formControlName="fechaValidaHasta" type="text" matInput [matDatepicker]="picker2" placeholder="Válida hasta">
       <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
       <mat-datepicker #picker2 startView="year"></mat-datepicker>
@@ -38,8 +38,8 @@
       <input formControlName="montoLimite" type="number" matInput placeholder="Monto límite">
     </mat-form-field>
 
-    <mat-form-field class="example-full-width">
-      <input formControlName="clienteId" type="text" placeholder="Cliente" matInput [matAutocomplete]="auto" (keyup)="filter(search)"
+    <mat-form-field appearance="outline" class="example-full-width">
+      <input formControlName="idCliente" type="text" placeholder="Cliente" matInput [matAutocomplete]="auto" (keyup)="filter(search)"
         [(ngModel)]="search">
       <mat-autocomplete #auto="matAutocomplete">
         <mat-option *ngFor="let cliente of clientesFiltered" [value]="cliente.id">

@@ -3,11 +3,13 @@ import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/fo
 import { TarjetaService } from '../../../services/rest/tarjeta.service';
 import { ClienteService } from '../../../services/rest/cliente.service';
 import { Router } from '@angular/router';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-crear-tarjeta',
   templateUrl: './crear-tarjeta.component.html',
-  styleUrls: ['./crear-tarjeta.component.scss']
+  styleUrls: ['./crear-tarjeta.component.scss'],
+  providers: [DatePipe]
 })
 export class CrearTarjetaComponent implements OnInit {
 
@@ -16,7 +18,7 @@ export class CrearTarjetaComponent implements OnInit {
   clientesFiltered: any;
 
   constructor(private fb: FormBuilder, private rest: TarjetaService,
-    private restCli: ClienteService, private router: Router) {
+    private restCli: ClienteService, private router: Router, public datepipe: DatePipe) {
     this.formGroup = this.fb.group({
       nroTarjeta: ['', [Validators.required]],
       fechaValidaDesde: ['', [Validators.required]],
@@ -25,7 +27,7 @@ export class CrearTarjetaComponent implements OnInit {
       diaCierre: ['', [Validators.required, Validators.min(1), Validators.max(30)]],
       categoria: ['', [Validators.required]],
       montoLimite: ['', [Validators.required]],
-      clienteId: ['', [Validators.required]],
+      idCliente: ['', [Validators.required]],
     });
   }
 
@@ -39,7 +41,11 @@ export class CrearTarjetaComponent implements OnInit {
     if (!this.formGroup.valid)
       return;
 
-    this.rest.postTarjeta(this.formGroup.value).subscribe(
+    const tarjeta = this.formGroup.value;
+    tarjeta['fechaValidaDesde'] = this.datepipe.transform(tarjeta['fechaValidaDesde'], 'yyyy-MM-dd');
+    tarjeta['fechaValidaHasta'] = this.datepipe.transform(tarjeta['fechaValidaHasta'], 'yyyy-MM-dd');
+
+    this.rest.postTarjeta(tarjeta).subscribe(
       () => {
         alert('Tarjeta creada!');
         this.router.navigateByUrl('/tarjetas');
