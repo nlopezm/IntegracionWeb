@@ -93,7 +93,7 @@
         </tr>
         <tr *ngFor="let consumo of liquidacion.consumos">
           <td>{{consumo.fecha | date:'dd-MM-yyyy'}}</td>
-          <td>{{consumo.establecimiento}}</td>
+          <td>{{consumo.establecimiento && consumo.establecimiento.razonSocial ? consumo.establecimiento.razonSocial: ''}}</td>
           <td>{{consumo.descripcion}}</td>
           <td>{{consumo.monto}}</td>
         </tr>
