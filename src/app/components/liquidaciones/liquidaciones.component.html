@@ -77,26 +77,22 @@
         </p>
       </li>
     </ul>
-
   </form>
-
   <!-- Muestra de liquidaciones -->
   <mat-card *ngIf="liquidaciones.length">
+    <mat-card-title>Liquidaciones</mat-card-title>
     <mat-accordion *ngFor="let liquidacion of liquidacionesFiltered">
       <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
         <mat-expansion-panel-header>
           <mat-panel-title>
-            <a matLine>Fecha de cierre de liquidacion:
+            <a matLine>Cierre:
               <b>{{liquidacion.fechaCierre | date:'dd-MM-yyyy'}}</b>
             </a>
           </mat-panel-title>
           <mat-panel-description>
-            <a>Fecha de vencimiento: {{liquidacion.fechaVencimiento | date:'dd-MM-yyyy'}}</a>
-            <a *ngIf="liquidacion.estado" style="margin-left: 50%">Estado:
-              <b> Pagada</b>
-            </a>
-            <a *ngIf="!liquidacion.estado" style="margin-left: 50%">Estado:
-              <b> Pendiente </b>
+            <a>Vencimiento: {{liquidacion.fechaVencimiento | date:'dd-MM-yyyy'}}</a>
+            <a style="margin-left: 50%">Estado:
+              <b> {{liquidacion.pagada? 'Pagada':'Pendiente'}}</b>
             </a>
           </mat-panel-description>
         </mat-expansion-panel-header>
