@@ -1,10 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
+
 @import url("https://fonts.googleapis.com/css?family=Montserrat:500,700");
 @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+body {
+    margin: 0;
+    font-family: Monserrat, sans-serif
+}
 
-body { margin: 0; font-family: Monserrat, sans-serif}
+.mat-form-field {
+    width: 95%;
+    margin: 0px 1%;
+}
 
-.mat-form-field{
-  width: 95%;
-  margin: 0px 1%;
+.mat-nav-list {
+    width: 98%;
 }
