@@ -23,6 +23,8 @@ export class LiquidacionesComponent implements OnInit {
   tarjetasFiltered: any = [];
   tarjetaFormGroup: FormGroup;
 
+  fechaFormGroup: FormGroup;
+
   panelOpenState = false;
   loading = false;
   formGroup: FormGroup;

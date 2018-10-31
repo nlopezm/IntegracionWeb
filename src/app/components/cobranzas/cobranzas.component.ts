@@ -19,6 +19,8 @@ export class CobranzasComponent implements OnInit {
   clientesFiltered: any = [];
   clienteFormGroup: FormGroup;
 
+  fechaFormGroup: FormGroup;
+
   tarjetas: any = [];
   tarjetasFiltered: any = [];
   tarjetaFormGroup: FormGroup;
