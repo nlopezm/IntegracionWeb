@@ -48,10 +48,10 @@
       </mat-autocomplete>
     </mat-form-field>
     <mat-form-field *ngIf="tarjetas.length">
-      <input formControlName="tarjetaId" type="text" placeholder="Tarjeta" matInput [matAutocomplete]="auto2" (keyup)="filterTarjetas(searchTarjetas)"
+      <input formControlName="nroTarjeta" type="text" placeholder="Tarjeta" matInput [matAutocomplete]="auto2" (keyup)="filterTarjetas(searchTarjetas)"
         [(ngModel)]="searchTarjetas">
       <mat-autocomplete #auto2="matAutocomplete">
-        <mat-option *ngFor="let tarjeta of tarjetasFiltered" [value]="tarjeta.id">
+        <mat-option *ngFor="let tarjeta of tarjetasFiltered" [value]="tarjeta.nroTarjeta">
           {{tarjeta.nroTarjeta}}
         </mat-option>
       </mat-autocomplete>

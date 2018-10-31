@@ -32,7 +32,7 @@ export class CrearConsumoComponent implements OnInit {
       cantCuotas: ['', [Validators.required]],
       interes: ['', []],
       montoCuota: ['', []],
-      tarjetaId: ['', [Validators.required]],
+      nroTarjeta: ['', [Validators.required]],
       fecha: ['', [Validators.required]],
       descripcion: ['', [Validators.required]],
       idEstablecimiento: ['', [Validators.required]],
