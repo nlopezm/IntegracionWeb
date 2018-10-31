@@ -66,5 +66,9 @@ export class CobranzasComponent implements OnInit {
     );
   }
 
+  buscarLiquidaciones() {
+
+  }
+
 
 }

@@ -1,131 +1,50 @@
-<mat-spinner *ngIf="loading"></mat-spinner>
-<mat-nav-list *ngIf="liquidaciones">
-  <form novalidate [formGroup]="formGroup" (onSubmit)="formGroup.valid">
-
-    <ul class="nav">
-      <!-- tipo de doc -->
-      <h4>Filtro por documento</h4>
-      <li>
-        <mat-form-field appearance="outline">
-          <mat-label>Tipo de documento</mat-label>
-          <mat-select [(value)]="selected" formControlName="tipo" type="text">
-            <mat-option value="DNI">DNI</mat-option>
-            <mat-option value="CI">CI</mat-option>
-            <mat-option value="LE">LE</mat-option>
-            <mat-option value="LC">LC</mat-option>
-          </mat-select>
-        </mat-form-field>
-      </li>
-      <!-- numero doc -->
-      <li>
-        <p *ngIf="selected">
-          <mat-form-field appearance="outline">
-            <mat-label>Numero de {{selected}}</mat-label>
-            <input formControlName="numeroDocumento" [(value)]="numeroDocumento" type="number" matInput placeholder="38200600">
-          </mat-form-field>
-        </p>
-      </li>
-      <!-- tarjetas del cliente -->
-      <li>
-        <p *ngIf="selected">
-          <mat-form-field appearance="outline">
-            <mat-label>Tarjetas</mat-label>
-            <mat-select formControlName="tarjeta">
-              <mat-option *ngFor="let tarjeta of tarjetas" [(value)]="tarjeta.id">{{tarjeta.id}}</mat-option>
-            </mat-select>
-          </mat-form-field>
-        </p>
-      </li>
+<!-- Muestra de liquidaciones -->
+<mat-card *ngIf="liquidaciones.length">
+  <mat-card-title>Liquidaciones</mat-card-title>
+  <mat-accordion *ngFor="let liquidacion of liquidacionesFiltered">
+    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <a matLine>
+            <b>Cierre:</b>
+            {{liquidacion.fechaCierre | date:'dd-MM-yyyy'}}
+          </a>
+        </mat-panel-title>
+        <mat-panel-description>
+          <a style="width: -webkit-fill-available">
+            <b>Vencimiento:</b> {{liquidacion.fechaVencimiento | date:'dd-MM-yyyy'}}</a>
+          <a>
+            <b>Estado:</b>
+            {{liquidacion.pagada? 'Pagada':'Pendiente'}}
+          </a>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <table style="text-align:justify;width: 100%">
+        <tr>
+          <th>Fecha</th>
+          <th>Establecimiento</th>
+          <th>Descripcion</th>
+          <th>Monto Total</th>
+        </tr>
+        <tr *ngFor="let consumo of liquidacion.consumos">
+          <td>{{consumo.fecha | date:'dd-MM-yyyy'}}</td>
+          <td>{{consumo.establecimiento}}</td>
+          <td>{{consumo.descripcion}}</td>
+          <td>{{consumo.monto}}</td>
+        </tr>
+      </table>
       <br>
-      <h4>Filtro fecha de cierre</h4>
-      <!-- mes cierre -->
-      <li>
-        <mat-form-field appearance="outline">
-          <mat-label>Mes cierre</mat-label>
-          <mat-select [(value)]="mesCierre" formControlName="tipo" type="number">
-            <mat-option (keyup)='filtroMesCierre()' *ngFor="let mesCierre of [1,2,3,4,5,6,7,8,9,10,11,12]" value="{{mesCierre}}">{{mesCierre}}</mat-option>
-          </mat-select>
-        </mat-form-field>
-
-      </li>
-      <!-- anio cierre -->
-      <li>
-        <p *ngIf="mesCierre">
-          <mat-form-field appearance="outline">
-            <mat-label>Año cierre</mat-label>
-            <input formControlName="anioCierre" type="number" matInput placeholder="1990">
-          </mat-form-field>
-        </p>
-      </li>
-      <!-- mes vencimiento -->
-      <h4>Filtro fecha de vencimiento</h4>
-      <li>
-        <mat-form-field appearance="outline">
-          <mat-label>Mes vencimiento</mat-label>
-          <mat-select [(value)]="mesVencimiento" formControlName="tipo" type="number">
-            <mat-option *ngFor="let mesVencimiento of [1,2,3,4,5,6,7,8,9,10,11,12]" value="{{mesVencimiento}}">{{mesVencimiento}}</mat-option>
-          </mat-select>
-        </mat-form-field>
-      </li>
-      <!-- anio vencimiento -->
-      <li>
-        <p *ngIf="mesVencimiento">
-          <mat-form-field appearance="outline">
-            <mat-label>Año vencimiento</mat-label>
-            <input formControlName="anioVencimiento" type="number" matInput placeholder="1990">
-          </mat-form-field>
-        </p>
-      </li>
-    </ul>
-  </form>
-  <!-- Muestra de liquidaciones -->
-  <mat-card *ngIf="liquidaciones.length">
-    <mat-card-title>Liquidaciones</mat-card-title>
-    <mat-accordion *ngFor="let liquidacion of liquidacionesFiltered">
-      <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-            <a matLine>
-              <b>Cierre:</b>
-              {{liquidacion.fechaCierre | date:'dd-MM-yyyy'}}
-            </a>
-          </mat-panel-title>
-          <mat-panel-description>
-            <a style="width: -webkit-fill-available">
-              <b>Vencimiento:</b> {{liquidacion.fechaVencimiento | date:'dd-MM-yyyy'}}</a>
-            <a>
-              <b>Estado:</b>
-              {{liquidacion.pagada? 'Pagada':'Pendiente'}}
-            </a>
-          </mat-panel-description>
-        </mat-expansion-panel-header>
-        <table style="text-align:justify;width: 100%">
-          <tr>
-            <th>Fecha</th>
-            <th>Establecimiento</th>
-            <th>Descripcion</th>
-            <th>Monto Total</th>
-          </tr>
-          <tr *ngFor="let consumo of liquidacion.consumos">
-            <td>{{consumo.fecha | date:'dd-MM-yyyy'}}</td>
-            <td>{{consumo.establecimiento}}</td>
-            <td>{{consumo.descripcion}}</td>
-            <td>{{consumo.monto}}</td>
-          </tr>
-        </table>
-        <br>
-        <button *ngIf="!liquidacion.pagada" mat-stroked-button color="primary" style="width:15%;
+      <button *ngIf="!liquidacion.pagada" mat-stroked-button color="primary" style="width:15%;
           text-align:center;margin-left: 40%">
-          Pagar
-        </button>
-      </mat-expansion-panel>
-    </mat-accordion>
-    <div *ngIf="!loading && !liquidaciones.length">
-      <div>
-        <div style="text-align: center">
-          <p>No hay liquidaciones creadas. </p>
-        </div>
+        Pagar
+      </button>
+    </mat-expansion-panel>
+  </mat-accordion>
+  <div *ngIf="!loading && !liquidaciones.length">
+    <div>
+      <div style="text-align: center">
+        <p>No hay liquidaciones creadas. </p>
       </div>
     </div>
-  </mat-card>
-</mat-nav-list>
+  </div>
+</mat-card>

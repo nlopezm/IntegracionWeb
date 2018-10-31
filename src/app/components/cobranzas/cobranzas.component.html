@@ -44,12 +44,10 @@
         </mat-select>
       </mat-form-field>
 
-      <p *ngIf="mesCierre">
-        <mat-form-field appearance="outline">
-          <mat-label>Año cierre</mat-label>
-          <input formControlName="anioCierre" type="number" matInput placeholder="1990">
-        </mat-form-field>
-      </p>
+      <mat-form-field appearance="outline" *ngIf="mesCierre">
+        <mat-label>Año cierre</mat-label>
+        <input formControlName="anioCierre" type="number" matInput placeholder="1990">
+      </mat-form-field>
 
       <div>
         <button mat-button matStepperPrevious>Previo</button>
@@ -58,7 +56,7 @@
     </form>
   </mat-step>
   <mat-step>
-    <ng-template matStepLabel (click)="buscarLiquidaciones()">Listo</ng-template>
+    <ng-template matStepLabel>Listo</ng-template>
     <div>
       <button mat-button matStepperPrevious>Previo</button>
       <button mat-button (click)="stepper.reset()">Borrar filtros</button>
