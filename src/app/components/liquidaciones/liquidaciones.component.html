@@ -91,6 +91,8 @@
           </mat-panel-title>
           <mat-panel-description>
             <a>Fecha de vencimiento: {{liquidacion.fechaVencimiento}}</a>
+            <a *ngIf="liquidacion.estado" style="margin-left: 50%">Estado: <b> Pagada</b> </a>
+            <a *ngIf="!liquidacion.estado" style="margin-left: 50%">Estado: <b> Pendiente </b></a>
           </mat-panel-description>
         </mat-expansion-panel-header>
         <table style="text-align:justify;width: 100%">
@@ -106,8 +108,24 @@
             <td>{{consumo.descripcion}}</td>
             <td>{{consumo.montototal}}</td>
           </tr>
-        </table>
+          
+        </table><br>
+        <button *ngIf="!liquidacion.estado" mat-stroked-button color="primary" style="width:15%;
+          text-align:center;margin-left: 40%">
+            Pagar
+          </button>
       </mat-expansion-panel>
     </mat-accordion>
+    <div *ngIf="!loading && !liquidaciones.length">
+      <div>
+        <div style="text-align: center">
+          <p>No hay liquidaciones creadas. </p>
+        </div>
+      </div>
+    </div>
+
+
+
+
   </mat-card>
 </mat-nav-list>

@@ -10,9 +10,9 @@ export class LiquidacionesComponent {
   search = '';
   // liquidaciones
   liquidacionesTotales: any = [
-    { id: 1, mesCierre: new Date('20/03/2019').getMonth, fechaCierre: '20/03/2019', fechaVencimiento: '18/04/2019' },
-    { id: 2, mesCierre: new Date('10/03/2019').getMonth, fechaCierre: '10/03/2019', fechaVencimiento: '25/03/2019' },
-    { id: 3, mesCierre: new Date('01/02/2019').getMonth, fechaCierre: '01/02/2019', fechaVencimiento: '30/03/2019' },
+    { id: 1, mesCierre: new Date('20/03/2019').getMonth, fechaCierre: '20/03/2019', fechaVencimiento: '18/04/2019', estado:true },
+    { id: 2, mesCierre: new Date('10/03/2019').getMonth, fechaCierre: '10/03/2019', fechaVencimiento: '25/03/2019', estado:true},
+    { id: 3, mesCierre: new Date('01/02/2019').getMonth, fechaCierre: '01/02/2019', fechaVencimiento: '30/03/2019', estado:false },
   ];
   liquidaciones: any;
   // tarjetas
