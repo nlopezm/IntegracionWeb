@@ -87,11 +87,11 @@
         <mat-expansion-panel-header>
           <mat-panel-title>
             <a matLine>Fecha de cierre de liquidacion:
-              <b>{{liquidacion.fechaCierre}}</b>
+              <b>{{liquidacion.fechaCierre | date:'dd-MM-yyyy'}}</b>
             </a>
           </mat-panel-title>
           <mat-panel-description>
-            <a>Fecha de vencimiento: {{liquidacion.fechaVencimiento}}</a>
+            <a>Fecha de vencimiento: {{liquidacion.fechaVencimiento | date:'dd-MM-yyyy'}}</a>
             <a *ngIf="liquidacion.estado" style="margin-left: 50%">Estado:
               <b> Pagada</b>
             </a>
@@ -108,7 +108,7 @@
             <th>Monto Total</th>
           </tr>
           <tr *ngFor="let consumo of liquidacion.consumos">
-            <td>{{consumo.fecha}}</td>
+            <td>{{consumo.fecha | date:'dd-MM-yyyy'}}</td>
             <td>{{consumo.establecimiento}}</td>
             <td>{{consumo.descripcion}}</td>
             <td>{{consumo.monto}}</td>

@@ -37,6 +37,7 @@ export class LiquidacionesComponent implements OnInit {
   ngOnInit() {
     this.liquidacionService.getLiquidaciones().subscribe(
       (data) => {
+        console.log (data);
         this.liquidaciones = data;
         this.liquidacionesFiltered = data;
       },
