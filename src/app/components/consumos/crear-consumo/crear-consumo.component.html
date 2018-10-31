@@ -1,8 +1,33 @@
 <form novalidate [formGroup]="formGroup" (onSubmit)="formGroup.valid && create()">
   <mat-card>
     <mat-form-field>
+      <mat-select placeholder="Cantidad de cuotas" formControlName="cantCuotas" (selectionChange)="changeCantCuotas()">
+        <mat-option *ngFor="let cuota of [1, 3, 6, 9, 12, 18, 24]" [value]="cuota">
+          {{cuota===1?'Un pago':cuota + ' Cuotas'}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <div *ngIf="formGroup.value.cantCuotas > 1">
+      <mat-form-field style="width: 31%">
+        <mat-label>Monto cuota ($)</mat-label>
+        <input formControlName="montoCuota" (change)="changeCouta()" type="number" matInput placeholder="Monto cuota ($)">
+      </mat-form-field>
+      <mat-form-field style="width: 31%">
+        <mat-label>Interés (%)</mat-label>
+        <input formControlName="interes" (change)="changeCouta()" type="number" matInput placeholder="Interés">
+      </mat-form-field>
+      <mat-form-field style="width: 31%">
+        <mat-label>Monto Total ($)</mat-label>
+        <input name="montoTotal" disabled matInput value="{{(formGroup.value.cantCuotas * formGroup.value.montoCuota) * (formGroup.value.interes + 100)/100}}">
+      </mat-form-field>
+    </div>
+    <mat-form-field *ngIf="formGroup.value.cantCuotas === 1">
       <mat-label>Monto ($)</mat-label>
-      <input formControlName="monto" type="number" matInput placeholder="Monto ($)">
+      <input formControlName="montoTotal" type="number" matInput placeholder="Monto ($)">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Descripción</mat-label>
+      <input formControlName="descripcion" type="text" matInput placeholder="Descripción">
     </mat-form-field>
     <mat-form-field>
       <input formControlName="idEstablecimiento" type="text" placeholder="Establecimiento" matInput [matAutocomplete]="auto3" (keyup)="filterEstablecimientos(searchEstablecimientos)"

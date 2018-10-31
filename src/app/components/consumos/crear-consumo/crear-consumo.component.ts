@@ -5,11 +5,13 @@ import { EstablecimientoService } from '../../../services/rest/establecimiento.s
 import { ConsumoService } from '../../../services/rest/consumo.service';
 import { Router } from '@angular/router';
 import { RestService } from '../../../services/rest/rest.service';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-crear-consumo',
   templateUrl: './crear-consumo.component.html',
-  styleUrls: ['./crear-consumo.component.scss']
+  styleUrls: ['./crear-consumo.component.scss'],
+  providers: [DatePipe]
 })
 export class CrearConsumoComponent implements OnInit {
   clientes: any = [];
@@ -21,14 +23,18 @@ export class CrearConsumoComponent implements OnInit {
   formGroup: FormGroup;
 
   constructor(private fb: FormBuilder, private clienteService: ClienteService,
-    private establecimientoService: EstablecimientoService,
+    private establecimientoService: EstablecimientoService, public datepipe: DatePipe,
     private consumoService: ConsumoService, private router: Router, private restService: RestService) {
 
     this.formGroup = this.fb.group({
-      monto: ['', [Validators.required]],
+      montoTotal: ['', [Validators.required]],
       clienteId: ['', [Validators.required]],
+      cantCuotas: ['', [Validators.required]],
+      interes: ['', []],
+      montoCuota: ['', []],
       tarjetaId: ['', [Validators.required]],
       fecha: ['', [Validators.required]],
+      descripcion: ['', [Validators.required]],
       idEstablecimiento: ['', [Validators.required]],
       codigoSeguridad: ['', [Validators.required, Validators.min(100), Validators.max(999)]],
     });
@@ -75,10 +81,33 @@ export class CrearConsumoComponent implements OnInit {
     });
   }
 
+  changeCouta() {
+    this.formGroup.patchValue({
+      montoTotal: (this.formGroup.value.cantCuotas * this.formGroup.value.montoCuota) * (100 + this.formGroup.value.interes) / 100,
+    });
+  }
+
+  changeCantCuotas() {
+    console.log("asf");
+    if (this.formGroup.value.cantCuotas > 1) {
+      this.formGroup.get('montoCuota').setValidators([Validators.required]);
+      this.formGroup.get('interes').setValidators([Validators.required]);
+
+    } else {
+      this.formGroup.get('montoCuota').clearValidators();
+      this.formGroup.get('interes').clearValidators();
+    }
+    this.formGroup.get('montoCuota').updateValueAndValidity();
+    this.formGroup.get('interes').updateValueAndValidity();
+  }
+
   create() {
-    console.log(this.formGroup.value);
+    console.log(this.formGroup);
     if (!this.formGroup.valid)
       return;
+
+    const consumo = this.formGroup.value;
+    consumo['fecha'] = this.datepipe.transform(consumo['fecha'], 'yyyy-MM-dd');
 
     this.consumoService.postConsumo(this.formGroup.value).subscribe(
       () => {

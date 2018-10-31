@@ -13,7 +13,7 @@ export class RestService {
 
   get(url): Observable<{}> {
     return this.http.get(url).pipe(
-      map(res => res['_embedded']),
+      map(res => res['_embedded'] || res),
       catchError(err => of(err)));
   }
 

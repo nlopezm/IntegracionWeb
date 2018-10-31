@@ -32,7 +32,9 @@ export class ConsumoService {
   }
 
   postConsumo(consumo: any): Observable<{}> {
-    return this.http.post(environment.baseApiUrl + '/tarjetas/' + consumo.tarjetaId + '/consumosEnteros', consumo);
+    if (consumo.cantCuotas === 1)
+      return this.http.post(environment.baseApiUrl + '/tarjetas/' + consumo.tarjetaId + '/consumosEnteros', consumo);
+    return this.http.post(environment.baseApiUrl + '/tarjetas/' + consumo.tarjetaId + '/consumosEnCuotas', consumo);
   }
 
 }
