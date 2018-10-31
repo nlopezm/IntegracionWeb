@@ -102,7 +102,6 @@ export class CrearConsumoComponent implements OnInit {
   }
 
   create() {
-    console.log(this.formGroup);
     if (!this.formGroup.valid)
       return;
 

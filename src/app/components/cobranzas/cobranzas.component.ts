@@ -24,12 +24,12 @@ export class CobranzasComponent {
   tarjetas: any;
   // consumos
   consumosTotales: any = [
-    { fecha: '22/03/2017', establecimiento: 'Correas de distribucion Filippi', descripcion: 'Lazos', montototal: 300, cols: 2, rows: 2 },
-    { fecha: '23/10/2015', establecimiento: 'Supermercado Piti', descripcion: 'Botines', montototal: 200, cols: 2, rows: 2 },
-    { fecha: '21/02/2017', establecimiento: 'Gimnasio GUAU', descripcion: 'Pesas', montototal: 30, cols: 2, rows: 2 },
-    { fecha: '02/09/2007', establecimiento: 'KEKE seguros', descripcion: 'Faraones', montototal: 100000000000, cols: 2, rows: 2 },
-    { fecha: '10/04/2017', establecimiento: 'Japon Tech', descripcion: 'Chocolates', montototal: 400, cols: 2, rows: 2 },
-    { fecha: '12/08/2017', establecimiento: 'Jefe Drones', descripcion: 'Los springsboks', montototal: 300, cols: 2, rows: 2 },
+    { fecha: '22/03/2017', establecimiento: 'Correas de distribucion Filippi', descripcion: 'Lazos', monto: 300, cols: 2, rows: 2 },
+    { fecha: '23/10/2015', establecimiento: 'Supermercado Piti', descripcion: 'Botines', monto: 200, cols: 2, rows: 2 },
+    { fecha: '21/02/2017', establecimiento: 'Gimnasio GUAU', descripcion: 'Pesas', monto: 30, cols: 2, rows: 2 },
+    { fecha: '02/09/2007', establecimiento: 'KEKE seguros', descripcion: 'Faraones', monto: 100000000000, cols: 2, rows: 2 },
+    { fecha: '10/04/2017', establecimiento: 'Japon Tech', descripcion: 'Chocolates', monto: 400, cols: 2, rows: 2 },
+    { fecha: '12/08/2017', establecimiento: 'Jefe Drones', descripcion: 'Los springsboks', monto: 300, cols: 2, rows: 2 },
   ];
   consumos: any;
   panelOpenState = false;
