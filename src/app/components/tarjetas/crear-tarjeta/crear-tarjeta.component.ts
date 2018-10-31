@@ -28,7 +28,7 @@ export class CrearTarjetaComponent implements OnInit {
       categoria: ['', [Validators.required]],
       montoLimite: ['', [Validators.required]],
       idCliente: ['', [Validators.required]],
-      pagoMinimo: ['', []],
+      pagoMinimo: [false, []],
     });
   }
 
