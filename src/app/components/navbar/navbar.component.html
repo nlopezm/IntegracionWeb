@@ -1,15 +1,16 @@
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav #drawer class="sidenav" fixedInViewport="true" [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-    [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="!(isHandset$ | async)">
+    [mode]="(isHandset$ | async) ? 'over' : 'side'" #sidenav mode="side" [(opened)]="opened" (opened)="events.push('open!')"
+    (closed)="events.push('close!')">
     <mat-toolbar color="primary">Entidad de crédito</mat-toolbar>
-    <mat-nav-list>
-      <a mat-list-item routerLink="home">Home</a>
-      <a mat-list-item routerLink="clientes">Clientes</a>
-      <a mat-list-item routerLink="cobranzas">Cobranzas</a>
-      <a mat-list-item routerLink="establecimientos">Establecimientos</a>
-      <a mat-list-item routerLink="liquidaciones">Liquidaciones</a>
-      <a mat-list-item routerLink="consumos">Consumos</a>
-      <a mat-list-item routerLink="tarjetas">Tarjetas</a>
+    <mat-nav-list >
+      <a mat-list-item routerLink="home" (click)="sidenav.toggle()" >Home</a>
+      <a mat-list-item routerLink="clientes" (click)="sidenav.toggle()">Clientes</a>
+      <a mat-list-item routerLink="cobranzas" (click)="sidenav.toggle()">Cobranzas</a>
+      <a mat-list-item routerLink="establecimientos" (click)="sidenav.toggle()">Establecimientos</a>
+      <a mat-list-item routerLink="liquidaciones" (click)="sidenav.toggle()">Liquidaciones</a>
+      <a mat-list-item routerLink="consumos" (click)="sidenav.toggle()">Consumos</a>
+      <a mat-list-item routerLink="tarjetas" (click)="sidenav.toggle()">Tarjetas</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
