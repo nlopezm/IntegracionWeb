@@ -58,7 +58,7 @@ export class TarjetasComponent implements OnInit {
 
   searchTarjeta() {
     this.tarjetasFiltered = this.tarjetas.filter((tarjeta) => {
-      return (tarjeta.numero.toLowerCase().indexOf(this.search.toLowerCase()) > -1);
+      return (tarjeta.nroTarjeta.toLowerCase().indexOf(this.search.toLowerCase()) > -1);
     });
   }
 }
