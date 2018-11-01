@@ -14,6 +14,7 @@ import { MatDialog } from '@angular/material';
 })
 export class NavbarComponent {
   title = 'Entidad de Credito';
+  abierto = false;
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches)

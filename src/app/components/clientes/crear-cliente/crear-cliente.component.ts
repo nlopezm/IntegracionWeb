@@ -12,7 +12,7 @@ import { DatePipe } from '@angular/common';
 })
 export class CrearClienteComponent {
   startDate = new Date();
-
+  selected: string;
   formGroup: FormGroup;
 
   constructor(private fb: FormBuilder, private rest: ClienteService, private router: Router, public datepipe: DatePipe) {

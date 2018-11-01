@@ -11,6 +11,8 @@ import { RestService } from 'src/app/services/rest/rest.service';
 })
 export class CobranzasComponent implements OnInit {
   search = '';
+  searchCliente = '';
+  searchTarjeta = '';
   // liquidaciones
   liquidaciones: any = [];
   liquidacionesFiltered: any = [];

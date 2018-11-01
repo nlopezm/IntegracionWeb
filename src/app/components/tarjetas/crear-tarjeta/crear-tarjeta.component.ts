@@ -12,7 +12,7 @@ import { DatePipe } from '@angular/common';
   providers: [DatePipe]
 })
 export class CrearTarjetaComponent implements OnInit {
-
+  search = '';
   formGroup: FormGroup;
   clientes: any;
   clientesFiltered: any;

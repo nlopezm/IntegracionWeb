@@ -21,6 +21,9 @@ export class CrearConsumoComponent implements OnInit {
   establecimientos: any = [];
   establecimientosFiltered: any = [];
   formGroup: FormGroup;
+  //searchs
+  searchClientes = '';
+  searchEstablecimientos = '';
 
   constructor(private fb: FormBuilder, private clienteService: ClienteService,
     private establecimientoService: EstablecimientoService, public datepipe: DatePipe,
