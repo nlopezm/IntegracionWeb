@@ -56,4 +56,9 @@ export class LiquidacionService {
     return liquidaciones;
   }
 
+  forzarLiquidaciones(): Observable<{}> {
+    return this.http.get(this.url + '/procesar');
+  }
+
+
 }

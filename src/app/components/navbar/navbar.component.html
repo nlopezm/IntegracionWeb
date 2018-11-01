@@ -7,7 +7,19 @@
       <a mat-list-item routerLink="clientes">Clientes</a>
       <a mat-list-item routerLink="consumos">Consumos</a>
       <a mat-list-item routerLink="establecimientos">Establecimientos</a>
-      <a mat-list-item routerLink="liquidaciones">Liquidaciones</a>
+      <a mat-list-item (click)="abierto=!abierto">
+        <span style="width: -webkit-fill-available;">Liquidaciones</span>
+        <i class="material-icons" *ngIf="!abierto">
+          arrow_right
+        </i>
+        <i class="material-icons" *ngIf="abierto">
+          arrow_drop_down
+        </i>
+      </a>
+      <ul *ngIf="abierto">
+        <a mat-list-item routerLink="liquidaciones">Ver</a>
+        <a mat-list-item (click)="generarLiquidacion()">Generar</a>
+      </ul>
       <a mat-list-item routerLink="tarjetas">Tarjetas</a>
     </mat-nav-list>
   </mat-sidenav>
