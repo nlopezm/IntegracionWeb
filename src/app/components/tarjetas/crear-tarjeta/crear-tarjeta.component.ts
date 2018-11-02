@@ -20,7 +20,7 @@ export class CrearTarjetaComponent implements OnInit {
   constructor(private fb: FormBuilder, private rest: TarjetaService,
     private restCli: ClienteService, private router: Router, public datepipe: DatePipe) {
     this.formGroup = this.fb.group({
-      nroTarjeta: ['', [Validators.required]],
+      nroTarjeta: ['', [Validators.required, Validators.min(1000000000)]],
       fechaValidaDesde: ['', [Validators.required]],
       fechaValidaHasta: ['', [Validators.required]],
       codigoSeguridad: ['', [Validators.required, Validators.min(100), Validators.max(999)]],

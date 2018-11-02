@@ -4,6 +4,8 @@
     <mat-form-field appearance="outline" style="width: 68%">
       <mat-label>Número de tarjeta</mat-label>
       <input formControlName="nroTarjeta" type="number" matInput placeholder="Número de tarjeta">
+      <mat-error *ngIf="!formGroup.get('nroTarjeta').pristine && formGroup.get('nroTarjeta').errors && formGroup.get('nroTarjeta').errors.min">
+        El número de tarjeta debe tener al menos 10 dígitos.</mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="outline" style="width: 28%">
