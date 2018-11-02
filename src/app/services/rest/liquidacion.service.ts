@@ -44,6 +44,7 @@ export class LiquidacionService {
   mapLiquidacion(liquidaciones: any) {
     liquidaciones.forEach(liquidacion => {
       liquidacion.consumos = liquidacion.consumos.filter((consumo) => !consumo.cantCuotas);
+      liquidacion.monto = 0;
       liquidacion.cuotas.forEach(cuota => {
         let consumo: any = {};
         consumo.fecha = cuota.consumoEnCuotas.fecha;
@@ -51,6 +52,7 @@ export class LiquidacionService {
         consumo.descripcion = cuota.consumoEnCuotas.descripcion + ' (' + cuota.numeroDeCuota + '/' + cuota.consumoEnCuotas.cantCuotas + ')';
         consumo.monto = cuota.montoCuota;
         liquidacion.consumos.push(consumo);
+        liquidacion.monto += consumo.monto;
       });
     });
     return liquidaciones;

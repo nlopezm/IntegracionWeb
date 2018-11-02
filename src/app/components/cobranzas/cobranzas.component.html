@@ -79,30 +79,22 @@
             <a style="width: -webkit-fill-available">
               <b>Vencimiento:</b> {{liquidacion.fechaVencimiento | date:'dd-MM-yyyy'}}</a>
             <a>
-              <b>Estado:</b>
-              {{liquidacion.pagada? 'Pagada':'Pendiente'}}
+              <b>Monto total:</b>
+              ${{liquidacion.monto}}
             </a>
           </mat-panel-description>
         </mat-expansion-panel-header>
         <table style="text-align:justify;width: 100%">
           <tr>
             <th>Fecha</th>
-            <th>Establecimiento</th>
-            <th>Descripcion</th>
-            <th>Monto Total</th>
+            <th>Monto</th>
           </tr>
-          <tr *ngFor="let consumo of liquidacion.consumos">
-            <td>{{consumo.fecha | date:'dd-MM-yyyy'}}</td>
-            <td>{{consumo.establecimiento && consumo.establecimiento.razonSocial ? consumo.establecimiento.razonSocial: ''}}</td>
-            <td>{{consumo.descripcion}}</td>
-            <td>{{consumo.monto}}</td>
+          <tr *ngFor="let cobranza of liquidacion.cobranzas">
+            <td>{{cobranza.fecha | date:'dd-MM-yyyy'}}</td>
+            <td>${{cobranza.monto}}</td>
           </tr>
         </table>
         <br>
-        <button *ngIf="!liquidacion.pagada" mat-stroked-button color="primary" style="width:15%;
-            text-align:center;margin-left: 40%">
-          Pagar
-        </button>
       </mat-expansion-panel>
     </mat-accordion>
     <div *ngIf="!loading && !liquidaciones.length">

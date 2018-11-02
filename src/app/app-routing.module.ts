@@ -23,7 +23,7 @@ const routes: Routes = [
   { path: 'clientes/crear', component: CrearClienteComponent, pathMatch: 'full', data: { title: 'Crear cliente' } },
   { path: 'clientes/:clienteId', component: ModificarClienteComponent, pathMatch: 'full', data: { title: 'Modificar cliente' } },
   { path: 'home', component: HomeComponent, pathMatch: 'full', data: { title: 'Home' } },
-  // { path: 'cobranzas', component: CobranzasComponent, pathMatch: 'full', data: { title: 'Cobranzas' } },
+  { path: 'cobranzas', component: CobranzasComponent, pathMatch: 'full', data: { title: 'Cobranzas' } },
   { path: 'consumos', component: ConsumosComponent, pathMatch: 'full', data: { title: 'Consumos' } },
   { path: 'consumos/crear', component: CrearConsumoComponent, pathMatch: 'full', data: { title: 'Generar consumo' } },
   { path: 'establecimientos/crear', component: CrearEstablecimientoComponent, pathMatch: 'full', data: { title: 'Crear establecimiento' } },
