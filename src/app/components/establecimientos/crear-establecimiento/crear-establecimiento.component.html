@@ -7,6 +7,8 @@
     <mat-form-field appearance="outline">
       <mat-label>CUIT</mat-label>
       <input formControlName="cuit" type="number" matInput placeholder="27432654819">
+      <mat-error *ngIf="!formGroup.get('cuit').pristine && formGroup.get('cuit').errors && (formGroup.get('cuit').errors.min || formGroup.get('cuit').errors.max)">
+        El CUIT debe tener 11 dígitos.</mat-error>
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>CBU</mat-label>

@@ -16,7 +16,7 @@ export class CrearEstablecimientoComponent {
   constructor(private fb: FormBuilder, private router: Router, private rest: EstablecimientoService) {
     this.formGroup = this.fb.group({
       razonSocial: ['', [Validators.required]],
-      cuit: ['', [Validators.required]],
+      cuit: ['', [Validators.required, Validators.min(10000000000), Validators.max(99999999999)]],
       domicilio: ['', [Validators.required]],
       cbu: ['', [Validators.required, Validators.min(1000000000)]]
     });
