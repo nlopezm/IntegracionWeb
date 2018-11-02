@@ -15,13 +15,13 @@ body {
   text-align:center;
   width:100%;
   h1 {
-    animation: 7s explode_title infinite;
-    font-family: 'Monoton', cursive;
+    animation: 7s explode_title ;
+    font-family: 'Bungee Inline', cursive;
     font-size:100px;
     font-weight:400;
     position:absolute;
     text-transform: uppercase;
-    top:280px;
+    top:150px;
     transform:translate3d(0,0,0);
     width:100%;
     color: whitesmoke
