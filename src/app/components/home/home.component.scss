@@ -1,8 +1,251 @@
-.mat-card {
-    text-align: center;
-    height: -webkit-fill-available;
+// Settings
+$color1: #673ab7;
+$ral: "Raleway";
+$titi: "Titillium Web";
+body {
+    background: black;
+    color: white;
 }
 
-::ng-deep .mat-card-header-text {
-    width: -webkit-fill-available !important;
+.main-content {
+    //   height:100vh;
+    //   position: relative;
+    text-align: center;
+    width: 100%;
+    h1 {
+        animation: 7s explode_title;
+        font-family: 'Bungee Inline', cursive;
+        font-size: 100px;
+        font-weight: 400;
+        position: absolute;
+        text-transform: uppercase;
+        top: 150px;
+        transform: translate3d(0, 0, 0);
+        width: 100%;
+        color: whitesmoke
+    }
+    .bounced-word {
+        color: $color1;
+        display: block;
+        font-family: $titi;
+        font-size: 22px;
+        font-weight: 600;
+        position: absolute;
+        text-align: center;
+        text-transform: uppercase;
+        top: 500px;
+        transform: translate3d(0, -200px, 0);
+        width: 100%;
+    }
+    .anim_1 {
+        animation: 5s bounced-word infinite, 30s hide;
+        animation-delay: 0, 20s, 40s;
+    }
+} // Title animation
+@keyframes explode_title {
+    10% {
+        transform: scaleY(0.2);
+        transform-origin: 0 bottom 0;
+    }
+    20% {
+        transform: scaleY(1.3);
+        transform-origin: 0 bottom 0;
+    }
+    30% {
+        transform: scaleY(0.7);
+        transform-origin: 0 bottom 0;
+    }
+    40% {
+        transform: scaleY(1);
+        transform-origin: 0 bottom 0;
+    }
+    100% {
+        transform: scaleY(1);
+        transform-origin: 0 bottom 0;
+    }
+}
+
+// Span Animation
+@keyframes bounced-word {
+    8% {
+        transform: translate3d(0, -45px, 0) scaleY(0.4);
+        transform-origin: left bottom 0;
+    }
+    25% {
+        transform: translate3d(0, -110px, 0) scaleY(1.4);
+    }
+    40% {
+        transform: translate3d(0, 0, 0) scaleY(0.6);
+        transform-origin: left bottom 0;
+    }
+    50% {
+        transform: translate3d(0, 0, 0) scaleY(1.2);
+        transform-origin: left bottom 0;
+    }
+    60% {
+        transform: translate3d(0, 0, 0) scaleY(1);
+        transform-origin: left bottom 0;
+    }
+    80% {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+    100% {
+        opacity: 1;
+        transform: translate3d(0, 50px, 0);
+    }
+} // Hide sentences by time
+@keyframes hide {
+    0%,
+    24% {
+        visibility: visible;
+    }
+    25%,
+    50% {
+        visibility: hidden;
+    }
+    50%,
+    75% {
+        visibility: visible;
+    }
+    75%,
+    100% {
+        visibility: visible;
+    }
+}
+
+body {
+    background: #00b4ff;
+    color: #333;
+    font: 100% Arial, Sans Serif;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+#background-wrap {
+    bottom: 0;
+    left: 0;
+    padding-top: 50px;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: -1;
+}
+
+/* KEYFRAMES */
+
+@-webkit-keyframes animateCloud {
+    0% {
+        margin-left: -1000px;
+    }
+    100% {
+        margin-left: 100%;
+    }
+}
+
+@-moz-keyframes animateCloud {
+    0% {
+        margin-left: -1000px;
+    }
+    100% {
+        margin-left: 100%;
+    }
+}
+
+@keyframes animateCloud {
+    0% {
+        margin-left: -1000px;
+    }
+    100% {
+        margin-left: 100%;
+    }
+}
+
+/* ANIMATIONS */
+
+.x1 {
+    -webkit-animation: animateCloud 35s linear infinite;
+    -moz-animation: animateCloud 35s linear infinite;
+    animation: animateCloud 35s linear infinite;
+    -webkit-transform: scale(0.65);
+    -moz-transform: scale(0.65);
+    transform: scale(0.65);
+}
+
+.x2 {
+    -webkit-animation: animateCloud 20s linear infinite;
+    -moz-animation: animateCloud 20s linear infinite;
+    animation: animateCloud 20s linear infinite;
+    -webkit-transform: scale(0.3);
+    -moz-transform: scale(0.3);
+    transform: scale(0.3);
+}
+
+.x3 {
+    -webkit-animation: animateCloud 30s linear infinite;
+    -moz-animation: animateCloud 30s linear infinite;
+    animation: animateCloud 30s linear infinite;
+    -webkit-transform: scale(0.5);
+    -moz-transform: scale(0.5);
+    transform: scale(0.5);
+}
+
+.x4 {
+    -webkit-animation: animateCloud 18s linear infinite;
+    -moz-animation: animateCloud 18s linear infinite;
+    animation: animateCloud 18s linear infinite;
+    -webkit-transform: scale(0.4);
+    -moz-transform: scale(0.4);
+    transform: scale(0.4);
+}
+
+.x5 {
+    -webkit-animation: animateCloud 25s linear infinite;
+    -moz-animation: animateCloud 25s linear infinite;
+    animation: animateCloud 25s linear infinite;
+    -webkit-transform: scale(0.55);
+    -moz-transform: scale(0.55);
+    transform: scale(0.55);
+}
+
+/* OBJECTS */
+
+.cloud {
+    background-color: rgb(197, 168, 0);
+    background: -moz-linear-gradient(top, #fff 5%, #f1f1f1 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(5%, #fff), color-stop(100%, #f1f1f1));
+    background: -webkit-linear-gradient(top, #fff 5%, #f1f1f1 100%);
+    background: -o-linear-gradient(top, #fff 5%, #f1f1f1 100%);
+    background: -ms-linear-gradient(top, #fff 5%, #f1f1f1 100%);
+    background: linear-gradient(top, #fff 5%, #f1f1f1 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fff', endColorstr='#f1f1f1', GradientType=0);
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+    -webkit-box-shadow: 0 8px 5px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0 8px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 5px rgba(0, 0, 0, 0.1);
+    height: 150px;
+    position: relative;
+    width: 250px;
+}
+
+.cloud:after,
+.cloud:before {
+    background-color: rgb(83, 83, 83);
+    content: '';
+    position: absolute;
+    /* 	z-indeX: -10; */
+}
+
+.cloud:after {
+    /* 	-webkit-border-radius: 100px;
+	-moz-border-radius: 100px;
+	border-radius: 100px; */
+    height: 35px;
+    /* 	left: 50px; */
+    top: 20px;
+    width: 250px;
 }
