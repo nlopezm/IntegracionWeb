@@ -42,7 +42,12 @@ export class NavbarComponent {
         this.liquidacionService.forzarLiquidaciones().subscribe(
           () => {
             alert('Liquidaciones creadas correctamente!');
-          }, (e) => console.log(e)
+          }, (e) => {
+            if (e.message.indexOf('192.168.216.34.8080'))
+              alert('Los servicios del banco se encuentran detenidos. No se puede procesar.');
+            else
+              alert('Hubo un error. Volvé a intentarlo');
+          }
         );
       }
     });
