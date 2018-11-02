@@ -18,7 +18,7 @@ export class CrearEstablecimientoComponent {
       razonSocial: ['', [Validators.required]],
       cuit: ['', [Validators.required]],
       domicilio: ['', [Validators.required]],
-      cbu: ['', [Validators.required]]
+      cbu: ['', [Validators.required, Validators.min(1000000000)]]
     });
   }
 

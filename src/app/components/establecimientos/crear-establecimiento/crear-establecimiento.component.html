@@ -11,6 +11,8 @@
     <mat-form-field appearance="outline">
       <mat-label>CBU</mat-label>
       <input formControlName="cbu" type="number" matInput placeholder="CBU">
+      <mat-error *ngIf="!formGroup.get('cbu').pristine && formGroup.get('cbu').errors && formGroup.get('cbu').errors.min">
+        El CBU debe tener al menos 10 dígitos.</mat-error>
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>Dirección</mat-label>
