@@ -14,6 +14,8 @@
     <mat-form-field appearance="outline">
       <mat-label>CBU</mat-label>
       <input formControlName="cbu" type="number" matInput placeholder="CBU">
+      <mat-error *ngIf="!formGroup.get('cbu').pristine && formGroup.get('cbu').errors && formGroup.get('cbu').errors.min">
+      El CBU debe tener al menos 10 dígitos.</mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="outline">
@@ -29,13 +31,16 @@
     <mat-form-field appearance="outline" *ngIf="selected">
       <mat-label>Numero de {{selected}}</mat-label>
       <input formControlName="nroDocumento" type="number" matInput placeholder="38200600">
+      <mat-error *ngIf="!formGroup.get('nroDocumento').pristine && formGroup.get('nroDocumento').errors && (formGroup.get('nroDocumento').errors.min || formGroup.get('nroDocumento').errors.max)">
+        El documento debe tener entre 6 y 8 dígitos.</mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="outline">
       <input formControlName="fechaNacimiento" type="text" matInput [matDatepicker]="picker" placeholder="Fecha de nacimiento">
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker startView="year" [startAt]="startDate"></mat-datepicker>
-    <mat-error *ngIf="!formGroup.get('fechaNacimiento').pristine && formGroup.get('fechaNacimiento').errors && formGroup.get('fechaNacimiento').errors.validDate"> Los clientes deben ser mayores de 18 años.</mat-error>
+      <mat-error *ngIf="!formGroup.get('fechaNacimiento').pristine && formGroup.get('fechaNacimiento').errors && formGroup.get('fechaNacimiento').errors.validDate">
+      Los clientes deben ser mayores de 18 años.</mat-error>
 
     </mat-form-field>
   </mat-card>

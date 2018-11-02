@@ -19,10 +19,10 @@ export class CrearClienteComponent {
   constructor(private fb: FormBuilder, private rest: ClienteService, private router: Router, public datepipe: DatePipe) {
     this.formGroup = this.fb.group({
       nombre: ['', [Validators.required]],
-      cbu: ['', [Validators.required]],
+      cbu: ['', [Validators.required, Validators.min(1000000000)]],
       apellido: ['', [Validators.required]],
       tipoDocumento: ['', [Validators.required]],
-      nroDocumento: ['', [Validators.required]],
+      nroDocumento: ['', [Validators.required, Validators.min(100000), Validators.max(99999999)]],
       fechaNacimiento: ['', [Validators.required, validateDate]],
     });
   }
