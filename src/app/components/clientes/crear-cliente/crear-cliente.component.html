@@ -35,6 +35,8 @@
       <input formControlName="fechaNacimiento" type="text" matInput [matDatepicker]="picker" placeholder="Fecha de nacimiento">
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker startView="year" [startAt]="startDate"></mat-datepicker>
+    <mat-error *ngIf="!formGroup.get('fechaNacimiento').pristine && formGroup.get('fechaNacimiento').errors && formGroup.get('fechaNacimiento').errors.validDate"> Los clientes deben ser mayores de 18 años.</mat-error>
+
     </mat-form-field>
   </mat-card>
   <button mat-fab color="primary" [disabled]="false" (click)="crear()">

@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/fo
 import { ClienteService } from '../../../services/rest/cliente.service';
 import { Router } from '@angular/router';
 import { DatePipe } from '@angular/common';
+import { validateDate } from 'src/app/validators/date.validator';
 
 @Component({
   selector: 'app-crear-cliente',
@@ -22,7 +23,7 @@ export class CrearClienteComponent {
       apellido: ['', [Validators.required]],
       tipoDocumento: ['', [Validators.required]],
       nroDocumento: ['', [Validators.required]],
-      fechaNacimiento: ['', [Validators.required]],
+      fechaNacimiento: ['', [Validators.required, validateDate]],
     });
   }
 
